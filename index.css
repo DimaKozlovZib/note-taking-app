@@ -5,7 +5,7 @@
 
 body {
   background-color: #F6F3F3;
-  font-family: "Roboto Slab", serif;
+  font-family: 'Roboto Slab', serif;
   font-weight: 400;
 }
 
@@ -15,12 +15,76 @@ body {
   padding: 0px 10px;
 }
 
+.menu {
+  position: relative;
+  height: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 30px;
+  cursor: pointer;
+}
+
+.menu span, .menu::before, .menu::after {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  margin: 0px auto;
+  background-color: #1F1A1A;
+  -webkit-transition: -webkit-transform 0.15s linear;
+  transition: -webkit-transform 0.15s linear;
+  transition: transform 0.15s linear;
+  transition: transform 0.15s linear, -webkit-transform 0.15s linear;
+}
+
+.menu::before, .menu::after {
+  content: "";
+}
+
+.menu::before {
+  top: 7px;
+}
+
+.menu::after {
+  bottom: 3px;
+}
+
+.menu span {
+  top: 14px;
+}
+
+.menu.is-active span {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.menu.is-active::before {
+  display: none;
+}
+
+.menu.is-active::after {
+  bottom: 0;
+  top: 14px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
 .header {
   background-color: #DDCB8C;
   padding: 12px 0px;
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
           box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
 }
+
+.header-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .header .logo {
   padding-left: 30px;
   text-decoration: none;
@@ -28,27 +92,42 @@ body {
   color: #1F1A1A;
 }
 
+@media (max-width: 450px) {
+  .header .logo {
+    padding-left: 5px;
+  }
+}
+
 .main {
   margin-top: 15px;
 }
+
 .main .container {
   padding: 0px 10px 0px 0px;
 }
+
+@media (max-width: 720px) {
+  .main .container {
+    padding: 0px 5px 0px 0px;
+  }
+}
+
 .main-box {
-  min-height: 500px;
+  min-height: 80vh;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 4fr;
-  grid-template-columns: 1fr 4fr;
+      grid-template-columns: 1fr 4fr;
 }
+
 .main-box .notes {
-  max-width: 80vw;
   margin-left: 15px;
   background-color: #DDCB8C;
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
           box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
   border-radius: 3px;
 }
+
 .main-box .notes .note {
   height: 10px;
   position: relative;
@@ -64,15 +143,18 @@ body {
       -ms-flex-align: center;
           align-items: center;
   overflow-x: hidden;
+  z-index: 1;
 }
+
 .main-box .notes .note p {
   line-height: 50px;
-  top: 0;
-  bottom: 0;
   position: absolute;
   white-space: nowrap;
 }
+
 .main-box .notes-title-and-button {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -80,33 +162,78 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+
 .main-box .notes-title-and-button P {
+  white-space: nowrap;
   padding-top: 3px;
 }
+
+.main-box .notes .buttons {
+  text-align: right;
+}
+
 .main-box .notes .buttons * {
   cursor: pointer;
   border-radius: 15px;
-  border: 2px solid #000;
+  border: none;
   padding: 5px 33px;
-  font-family: "Roboto Slab", serif;
+  font-family: 'Roboto Slab', serif;
   font-weight: 400;
-  background: rgba(214, 214, 214, 0.5);
+  background: #AC9D65;
 }
+
 .main-box .notes .buttons *:hover {
   background: #d6d6d6;
 }
+
+.main-box .notes .buttons *:first-child {
+  margin-right: 5px;
+}
+
+@media (max-width: 720px) {
+  .main-box .notes {
+    margin-left: 5px;
+  }
+}
+
 .main-box .nav {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 100;
   min-width: 200px;
   border-radius: 3px;
   background-color: #DDCB8C;
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
           box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
 }
+
 .main-box .nav, .main-box .notes {
   padding: 25px 18px 18px 18px;
 }
+
 @media (max-width: 1200px) {
   .main-box .nav {
     border-radius: 0px 3px 3px 0px;
   }
 }
+
+@media (max-width: 720px) {
+  .main-box .nav {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.main-box .nav.is-open {
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .main-box {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+/*# sourceMappingURL=index.css.map */

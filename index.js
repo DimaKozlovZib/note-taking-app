@@ -1,9 +1,9 @@
-//тут сейчас ничего нет
+"use script";
+import {x} from "/buttons-notes.js";
 
 
 let menu = document.querySelector("#menu");
 let nav = document.querySelector("#Site-navigation");
-
 
 menu.onclick = () => {
     if (!(menu.classList.contains("is-active"))) {
@@ -14,3 +14,4 @@ menu.onclick = () => {
         nav.classList.remove("is-open");
     }
 };
+

@@ -11,10 +11,16 @@
     <title>Document</title>
 </head>
 <body>
+    <!--<div class="window-for-add-note">
+        <header class="window-for-add-note-header">
+            <a href="" class="page-logo">Заметки</a>
+        </header>
+        <main class="window-for-add-note-main"></main>
+    </div>-->
     <header class="header">
         <div class="container">
             <div class="header-box">
-                <a href="" class="logo">Заметки</a>
+                <a href="" class="page-logo">Заметки</a>
                 <div class="menu" id="menu">
                     <span></span>
                 </div>
@@ -28,11 +34,15 @@
                     <p>Навигация :</p>
                 </nav>
                 <article class="notes">
-                    <div class="notes-title-and-button">
+                    <form action="" class="form-for-add">
+                        <textarea name="" id="input-for-add"></textarea>
+                        <button id="add">Добавить</button>
+                    </form>
+                    <div class="notes-title">
                         <p class="notes-title-text" id="notes-title-text">Все записки :</p>
                         <div class="buttons">
-                            <button id="add">Добавить</button>
-                            <button id="delete">Удалить</button>
+                           
+                            <!--<button id="delete">Удалить</button>-->
                         </div>
                     </div>
                     <section class="notes-box">

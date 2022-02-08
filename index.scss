@@ -16,12 +16,48 @@ body{
 $color1 : #DDCB8C;
 
 
+
+/*
+.window-for-add-note{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 50vw;
+    max-height: 60vh;
+    min-width: 275px;
+    box-sizing: border-box;
+    background-color: $color1;
+    padding: 10px 15px;
+    border-radius: 10px;
+    z-index: 100;
+    height: auto;
+    margin: auto;
+    &::after{
+        content: "";
+        color: #fff;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 99;
+    }
+}
+*/
+
+
 .menu{
     position: relative;
     height: auto;
     align-items: center;
     width: 30px;
+    display: none;
     cursor: pointer;
+
     span , &::before , &::after{
         position: absolute;
         height: 2px;
@@ -56,9 +92,28 @@ $color1 : #DDCB8C;
         transform: rotate(-45deg);
     }
 }
+@media (max-width: 720px){
+    .menu{
+        display: block;
+    }
+}
 
 
 
+
+
+
+.page-logo{
+    padding-left: 30px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #1F1A1A;
+}
+@media (max-width: 450px){
+    .page-logo{
+        padding-left: 5px;
+    }
+}
 
 
 .header{
@@ -68,17 +123,6 @@ $color1 : #DDCB8C;
     &-box{
         display: flex;
         justify-content: space-between;
-    }
-    .logo{
-        padding-left: 30px;
-        text-decoration: none;
-        font-size: 20px;
-        color: #1F1A1A;
-    }
-    @media (max-width: 450px){
-        .logo{
-            padding-left: 5px;
-        }
     }
 }
 
@@ -121,7 +165,7 @@ $color1 : #DDCB8C;
             }
         }
         .notes{//верхний тект
-            &-title-and-button{
+            &-title{
                 flex-wrap: wrap;
                 display: flex;
                 justify-content: space-between;
@@ -160,7 +204,7 @@ $color1 : #DDCB8C;
 
         .nav{
             box-sizing: border-box;
-            z-index: 100;
+            z-index: 90;
             min-width: 200px;
             border-radius: 3px;
             background-color: $color1; 
@@ -193,3 +237,32 @@ $color1 : #DDCB8C;
     }
 }
 
+
+.form-for-add{
+    max-width: 100%;
+    text-align: right;
+    #input-for-add{
+        resize: vertical;
+        height: 50px;
+        max-height: 200px;
+        width: 100%;
+        border: none;
+        background-color: #d6d6d6;
+        border-radius: 5px;
+        outline: none;
+    }
+    #add{
+        cursor: pointer;
+        border-radius: 15px;
+        margin-top: 3px;
+        border: none;
+        padding: 5px 33px;
+        font-family: 'Roboto Slab', serif;
+        font-weight: 400;
+        background: #AC9D65;
+        display: inline-block;
+        &:hover{
+            background: rgba(214, 214, 214, 1);
+        }
+    }
+}

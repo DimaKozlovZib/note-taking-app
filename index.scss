@@ -163,6 +163,15 @@ $color1 : #DDCB8C;
                     position: absolute;
                     white-space: nowrap;
                 }
+                img{
+                    line-height: 50px;
+                    position: absolute;
+                    right: 0px;
+                    padding: 0px 10px 0px 15px;
+                    cursor: pointer;
+                    background-color: #d6d6d6;
+
+                }
             }
         }
         .notes{//верхний тект
@@ -239,18 +248,22 @@ $color1 : #DDCB8C;
 }
 
 
-.form-for-add{
+.form-for-add{ 
     max-width: 100%;
     text-align: right;
     #input-for-add{
         resize: vertical;
         height: 50px;
-        max-height: 200px;
+        box-sizing: border-box;
+        max-height: 250px;
         width: 100%;
+        font-size: 14px;
         border: none;
         background-color: #d6d6d6;
         border-radius: 5px;
         outline: none;
+        padding: 10px 20px;
+        min-height: 40px;
     }
     #add{
         cursor: pointer;

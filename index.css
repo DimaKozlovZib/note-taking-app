@@ -191,6 +191,15 @@ body {
   white-space: nowrap;
 }
 
+.main-box .notes .note img {
+  line-height: 50px;
+  position: absolute;
+  right: 0px;
+  padding: 0px 10px 0px 15px;
+  cursor: pointer;
+  background-color: #d6d6d6;
+}
+
 .main-box .notes-title {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -284,12 +293,17 @@ body {
 .form-for-add #input-for-add {
   resize: vertical;
   height: 50px;
-  max-height: 200px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  max-height: 250px;
   width: 100%;
+  font-size: 14px;
   border: none;
   background-color: #d6d6d6;
   border-radius: 5px;
   outline: none;
+  padding: 10px 20px;
+  min-height: 40px;
 }
 
 .form-for-add #add {

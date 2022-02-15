@@ -57,6 +57,7 @@ window.onload = function(){
         box.append(img);
         box.prepend(note);//вставляем в родителя
     }
+    return deleteImg = deleteImgArray();
 }
 
 
@@ -81,6 +82,14 @@ function createNoteText(item){
     return note;
 }
 
-//let deleteImg = document.querySelector(".deleteImg");
 
+
+/*function deleteImgArray() {return document.querySelectorAll('.deleteImg');}; 
+let deleteImg = [];
+console.log(deleteImg)
+deleteImg.forEach(item => {console.log(item), item.addEventListener("click", () => {
+    //let deleteText = item.parentElement;
+    console.log("deleteText")
+})});
+*/  
 

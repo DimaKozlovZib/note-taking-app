@@ -296,6 +296,7 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   max-height: 250px;
+  margin-top: 15px;
   width: 100%;
   font-size: 14px;
   border: none;
@@ -320,5 +321,9 @@ body {
 
 .form-for-add #add:hover {
   background: #d6d6d6;
+}
+
+.form-for-add .title-section-add {
+  float: left;
 }
 /*# sourceMappingURL=index.css.map */

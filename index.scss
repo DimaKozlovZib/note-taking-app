@@ -256,6 +256,7 @@ $color1 : #DDCB8C;
         height: 50px;
         box-sizing: border-box;
         max-height: 250px;
+        margin-top: 15px;
         width: 100%;
         font-size: 14px;
         border: none;
@@ -278,5 +279,8 @@ $color1 : #DDCB8C;
         &:hover{
             background: rgba(214, 214, 214, 1);
         }
+    }
+    .title-section-add{
+        float: left;
     }
 }

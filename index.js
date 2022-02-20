@@ -1,9 +1,9 @@
 "use script";
-
+//localStorage.removeItem("listNotes")
 //.............................................................................................
 
-let menu = document.querySelector("#menu");
-let nav = document.querySelector("#Site-navigation");
+const menu = document.querySelector("#menu");
+const nav = document.querySelector("#Site-navigation");
 
 //.............................................................................................
 
@@ -20,8 +20,8 @@ menu.onclick = () => {
 
 //.............................................................................................
 
-let add = document.querySelector("#add");
-let form = document.querySelector("#input-for-add");
+const add = document.querySelector("#add");
+const form = document.querySelector("#input-for-add");
 
 //.............................................................................................
 
@@ -31,39 +31,41 @@ let stopSending = add.onclick = (event) => {
 
 let addNotes = add.onclick = () => {  
     let noteString = form.value;
-    if(noteString == ""){
-        return;
-    } else {
-        noteString = noteString +"@#"+ localStorage.listNotes;//для разделения сторок
-    }
-    return localStorage.setItem("listNotes" , noteString);
+    if(noteString === "") return;    
+    
+    noteString = localStorage.listNotes ? [localStorage.listNotes , noteString].join("@#") : noteString;//для разделения сторок
+    localStorage.setItem("listNotes" , noteString);
+    return;
 };
 
 //.............................................................................................
 
-let noteBox = document.querySelector("#note-box");
+const noteBox = document.querySelector("#note-box");
 
 //.............................................................................................
-window.onload = function(){
-    let stringList = localStorage.listNotes.split("@#");
-    for (let item of stringList) {
+window.onload = function build_HTML_elements(){
+    if (!localStorage.listNotes) return;
 
-        let box = createNoteWrapper();//создаём элемент
-        let img = createNoteDeleteImg();
+    let stringList = localStorage.listNotes.split("@#");//notes array
+    let img = createNoteDeleteImg();
+     
+    for (let [ index , item] of stringList.entries()) {
+        let box = createNoteWrapper(index);//создаём элемент
         let note = createNoteText(item);//создаём элемент
-        
+        let img = createNoteDeleteImg();
         //.............................................................................................
 
         box.append(img);
         box.prepend(note);//вставляем в родителя
     }
-    return deleteImg = deleteImgArray();
+    return deleteNote(stringList);
 }
 
 
-function createNoteWrapper() {
+function createNoteWrapper(index) {
     let box = document.createElement("div");//создаём элемент
     box.classList += "note";//задаём класс
+    box.setAttribute("data-index" , index);
     noteBox.prepend(box);//вставляем в родителя
     return box;
 }
@@ -76,20 +78,26 @@ function createNoteDeleteImg() {
 }
 
 function createNoteText(item){
-    let note = document.createElement("p");//создаём элемент
-    note.classList += "note-text";//задаём класс
-    note.innerHTML = item;//задаём значение
-    return note;
+    if(item){// !== undefined , !== ""
+        let note = document.createElement("p");//создаём элемент
+        note.classList += "note-text";//задаём класс
+        note.innerHTML = item;//задаём значение
+        return note;
+    }
 }
 
+function deleteNote(array) {
+    const deleteImg = document.querySelectorAll('.deleteImg');
 
+    deleteImg.forEach(item => {item.addEventListener("click", () => {
 
-/*function deleteImgArray() {return document.querySelectorAll('.deleteImg');}; 
-let deleteImg = [];
-console.log(deleteImg)
-deleteImg.forEach(item => {console.log(item), item.addEventListener("click", () => {
-    //let deleteText = item.parentElement;
-    console.log("deleteText")
-})});
-*/  
+        let parent = item.parentElement
+        parent.style.display = "none";
+        
+        let indexDeleteNote = parent.getAttribute("data-index");
+        array.splice(indexDeleteNote , 1)
+        localStorage.setItem("listNotes" , array.join("@#"));
+    })});
+}
+
 

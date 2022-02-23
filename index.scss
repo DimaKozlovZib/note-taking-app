@@ -17,41 +17,33 @@ $color1 : #DDCB8C;
 
 
 
-/*
-.window-for-add-note{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 50vw;
-    max-height: 60vh;
-    min-width: 275px;
-    box-sizing: border-box;
-    background-color: $color1;
-    padding: 10px 15px;
-    border-radius: 10px;
-    z-index: 100;
-    height: auto;
-    margin: auto;
-    &::after{
-        content: "";
-        color: #fff;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        z-index: 99;
+//...................button................................................
 
+.buttons{
+    text-align: right;
+    *{
+        cursor: pointer;
+        border-radius: 15px;
+        margin-top: 3px;
+        border: none;
+        padding: 5px 33px;
+        font-family: 'Roboto Slab', serif;
+        font-weight: 400;
+        background: #AC9D65;
+        display: inline-block;
+        &:hover{
+            background: rgba(214, 214, 214, 1);
+        }
+        &:first-child{
+            margin-right: 5px;
+        }
     }
 }
-*/
 
+//........burger menu.............................................................................
 
 .menu{
+    user-select: none;
     position: relative;
     height: auto;
     align-items: center;
@@ -102,7 +94,7 @@ $color1 : #DDCB8C;
 
 
 
-
+//.............header...............................................................................
 
 .page-logo{
     padding-left: 30px;
@@ -115,8 +107,6 @@ $color1 : #DDCB8C;
         padding-left: 5px;
     }
 }
-
-
 .header{
     background-color: $color1;
     padding: 12px 0px;
@@ -126,6 +116,9 @@ $color1 : #DDCB8C;
         justify-content: space-between;
     }
 }
+
+
+//.............main.....................................................................................
 
 .main{
     margin-top: 15px;
@@ -184,34 +177,12 @@ $color1 : #DDCB8C;
                     padding-top: 3px;
                 }
             }
-            .buttons{
-                text-align: right;
-                *{
-                    cursor: pointer;
-                    border-radius: 15px;
-                    border: none;
-                    padding: 5px 33px;
-                    font-family: 'Roboto Slab', serif;
-                    font-weight: 400;
-                    background: #AC9D65;
-                    &:hover{
-                        background: rgba(214, 214, 214, 1);
-                    }
-                    &:first-child{
-                        margin-right: 5px;
-                    }
-                }
-            }
         }
         @media (max-width: 720px){
             .notes{
                 margin-left: 5px;
             }
         }
-
-
-
-
         .nav{
             box-sizing: border-box;
             z-index: 90;
@@ -247,6 +218,7 @@ $color1 : #DDCB8C;
     }
 }
 
+//...............form on page for add notes.....................................................................................
 
 .form-for-add{ 
     max-width: 100%;
@@ -266,21 +238,27 @@ $color1 : #DDCB8C;
         padding: 10px 20px;
         min-height: 40px;
     }
-    #add{
-        cursor: pointer;
-        border-radius: 15px;
-        margin-top: 3px;
-        border: none;
-        padding: 5px 33px;
-        font-family: 'Roboto Slab', serif;
-        font-weight: 400;
-        background: #AC9D65;
-        display: inline-block;
-        &:hover{
-            background: rgba(214, 214, 214, 1);
-        }
-    }
     .title-section-add{
         float: left;
     }
+}
+
+//.............window confirm delete ...............................................................................
+
+.window-confirm-deletion{
+    .window-confirm-deletion-title{
+        margin-bottom: 5px;
+        color: #000;
+    }
+    .buttons{
+        margin-top: 10px;
+    }
+}
+.window-confirm-deletion.is-active{
+    display: block;
+}
+
+
+.is-invisible{
+    display: none;
 }

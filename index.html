@@ -11,12 +11,6 @@
     <title>Document</title>
 </head>
 <body>
-    <!--<div class="window-for-add-note">
-        <header class="window-for-add-note-header">
-            <a href="" class="page-logo">Заметки</a>
-        </header>
-        <main class="window-for-add-note-main"></main>
-    </div>-->
     <header class="header">
         <div class="container">
             <div class="header-box">
@@ -34,26 +28,34 @@
                     <p>Навигация :</p>
                 </nav>
                 <article class="notes">
-                    <form class="form-for-add" name="note">
-                        <label for="note" class="title-section-add">Добавить запись:</label>
-                        <textarea name="" id="input-for-add"></textarea>
-                        <button id="add">Добавить</button>
-                    </form>
-                    <div class="notes-title">
-                        <p class="notes-title-text" id="notes-title-text">Все записки :</p>
-                        <div class="buttons">
-                           
-                            <!--<button id="delete">Удалить</button>-->
+                    <div class="notes-container">
+                        <form class="form-for-add" name="note">
+                            <label for="note" class="title-section-add">Добавить запись:</label>
+                            <textarea name="" id="input-for-add"></textarea>
+                            <div class="buttons">
+                                <button id="add">Добавить</button>
+                            </div>  
+                        </form>
+                        <div class="notes-title">
+                            <p class="notes-title-text" id="notes-title-text">Все записки :</p>
                         </div>
+                        <section class="notes-box" id="note-box">
+                            <!--<div class="note">
+                                <p class="note-text">какойто текст...</p>
+                                <img src="image/delete.svg" alt="">
+                            </div>-->
+                        </section>
                     </div>
-                    <section class="notes-box" id="note-box">
-                        <div class="note">
-                            <p class="note-text">какойто текст...</p>
-                            <img src="image/delete.svg" alt="">
+                    <div class="window-confirm-deletion is-invisible">
+                        <h3 class="window-confirm-deletion-title">подтверждение :</h3>
+                        <p>Потвердите что вы хотите удалить запись.</p>
+                        <div class="buttons">
+                            <div class="confirm" id="confirm-button">удалить</div>
+                            <div class="cancel" id="cancel">отмена</div>
                         </div>
-                    </section>
-                    
+                    </div>   
                 </article>
+                 
             </div>
            
         </div>

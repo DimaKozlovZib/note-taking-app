@@ -202,7 +202,8 @@ $color1 : #DDCB8C;
         @media (max-width: 720px){
             .nav{
                 display: none;
-                position: absolute;
+                position: absolute; 
+
                 width: 100%;
                 height: 100%;
             }
@@ -260,5 +261,5 @@ $color1 : #DDCB8C;
 
 
 .is-invisible{
-    display: none;
+    display: none; 
 }

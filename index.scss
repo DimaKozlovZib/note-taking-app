@@ -264,7 +264,7 @@ $color1: #ddcb8c;
 .load-icon {
     display: none;
     justify-content: center;
-    margin-top: 15px;
+    margin-top: 14px;
     img {
         filter: opacity(90%);
         margin: 0px auto;
@@ -280,6 +280,7 @@ $color1: #ddcb8c;
         animation-duration: 1.5s;
     }
 }
+
 @keyframes load {
     0% {
         transform: rotateZ(0deg);

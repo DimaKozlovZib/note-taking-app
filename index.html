@@ -66,5 +66,12 @@
         </div>
     </main>
     <script src="index.js"></script>
+    <script> 
+        if (/*@cc_on!@*/false) { 
+            let headHTML = document.getElementsByTagName('head')[0].innerHTML; 
+                headHTML    += '<link type="text/css" rel="stylesheet" href="index.css">'; 
+                document.getElementsByTagName('head')[0].innerHTML = headHTML; 
+        } 
+    </script>
 </body>
 </html>

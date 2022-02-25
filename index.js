@@ -42,6 +42,7 @@ const noteBox = document.querySelector("#note-box");
 window.onload = function build_HTML_elements(){
     if (!localStorage.listNotes) return;
 
+
     let stringList = localStorage.listNotes.split("@#");//notes array
      
     for (let [index , item] of stringList.entries()) {
@@ -52,7 +53,8 @@ window.onload = function build_HTML_elements(){
         box.append(img);
         box.prepend(note);//вставляем в родителя
     }
-    return deleteNote(stringList);
+    hideLoadIcon();
+    deleteNote(stringList);
 }
 function createNoteWrapper(index) {
     let box = document.createElement("div");//создаём элемент
@@ -75,22 +77,23 @@ function createNoteText(item){
     note.innerHTML = item;//задаём значение
     return note;
 }
-
+function hideLoadIcon() {
+    document.querySelector("#load-icon").classList.remove("is-working");
+    document.querySelectorAll(".note").forEach(i => {i.classList.add("is-working")});
+}
 
 
 function deleteNote(array) {
-    const deleteImg = document.querySelectorAll('.deleteImg');
-    
+    const deleteImg = document.querySelectorAll('.deleteImg');//иконка удаления
 
     deleteImg.forEach(item => {
-        item.addEventListener("click", () => {
-            makeElementsInvisible();
+        item.addEventListener("click", () => {//слушатель кликов на иконку удаления
+            makeElementsInvisible();//делаем видимым окно для подтверждения удаления
 
-            document.querySelector("#confirm-button").onclick = function(){
-                item.parentElement.style.display = "none";
-
-                let indexDeleteNote = item.parentElement.getAttribute("data-index");
-                array.splice(indexDeleteNote , 1)
+            document.querySelector("#confirm-button").onclick = function(){//слушаем кнопку подтверждения
+                item.parentElement.style.display = "none";// делаем невидимым удаляемый элемент
+                // item.parentElement - обёртка item'а с индексом
+                array.splice( item.parentElement.getAttribute("data-index") , 1)
                 localStorage.setItem("listNotes" , array.join("@#"));
 
                 makeElementsInvisible();
@@ -114,17 +117,17 @@ function getAllPreviousElements(item){
 }
 function indexСhange(array){
     array.forEach(item => {
-        item.setAttribute("data-index" , item.getAttribute("data-index") - 1);
+        item.setAttribute("data-index" , item.getAttribute("data-index")--);
     })
 }
 function makeElementsInvisible() {
     const windowConfirm = document.querySelector(".window-confirm-deletion");
 
     if (windowConfirm.classList.contains("is-invisible")) {
-        document.querySelector(".notes-container").classList += " is-invisible";
+        document.querySelector(".notes-container").classList.add("is-invisible");
         windowConfirm.classList.remove("is-invisible");
     } else {
         document.querySelector(".notes-container").classList.remove("is-invisible");
-        windowConfirm.classList += " is-invisible";
+        windowConfirm.classList.add("is-invisible");
     }
 }

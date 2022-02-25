@@ -1,40 +1,38 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
-body{
-    background-color: #F6F3F3;
-    font-family: 'Roboto Slab', serif;
+body {
+    background-color: #f6f3f3;
+    font-family: "Roboto Slab", serif;
     font-weight: 400;
 }
-.container{
+.container {
     max-width: 1200px;
     margin: 0px auto;
     padding: 0px 10px;
 }
 
-$color1 : #DDCB8C;
-
-
+$color1: #ddcb8c;
 
 //...................button................................................
 
-.buttons{
+.buttons {
     text-align: right;
-    *{
+    * {
         cursor: pointer;
         border-radius: 15px;
         margin-top: 3px;
         border: none;
         padding: 5px 33px;
-        font-family: 'Roboto Slab', serif;
+        font-family: "Roboto Slab", serif;
         font-weight: 400;
-        background: #AC9D65;
+        background: #ac9d65;
         display: inline-block;
-        &:hover{
+        &:hover {
             background: rgba(214, 214, 214, 1);
         }
-        &:first-child{
+        &:first-child {
             margin-right: 5px;
         }
     }
@@ -42,7 +40,7 @@ $color1 : #DDCB8C;
 
 //........burger menu.............................................................................
 
-.menu{
+.menu {
     user-select: none;
     position: relative;
     height: auto;
@@ -51,95 +49,95 @@ $color1 : #DDCB8C;
     display: none;
     cursor: pointer;
 
-    span , &::before , &::after{
+    span,
+    &::before,
+    &::after {
         position: absolute;
         height: 2px;
         width: 100%;
         margin: 0px auto;
-        background-color: #1F1A1A;
+        background-color: #1f1a1a;
         transition: transform 0.15s linear;
     }
-    &::before , &::after{
+    &::before,
+    &::after {
         content: "";
     }
-    &::before{
+    &::before {
         top: 7px;
     }
-    &::after{
+    &::after {
         bottom: 3px;
     }
-    span{
+    span {
         top: 14px;
     }
 }
-.menu.is-active{
-    span{
+.menu.is-active {
+    span {
         transform: rotate(45deg);
     }
-    &::before{
+    &::before {
         display: none;
     }
-    &::after{
+    &::after {
         bottom: 0;
         top: 14px;
         transform: rotate(-45deg);
     }
 }
-@media (max-width: 720px){
-    .menu{
+@media (max-width: 720px) {
+    .menu {
         display: block;
     }
 }
 
-
-
-
 //.............header...............................................................................
 
-.page-logo{
+.page-logo {
     padding-left: 30px;
     text-decoration: none;
     font-size: 20px;
-    color: #1F1A1A;
+    color: #1f1a1a;
 }
-@media (max-width: 450px){
-    .page-logo{
+@media (max-width: 450px) {
+    .page-logo {
         padding-left: 5px;
     }
 }
-.header{
+.header {
     background-color: $color1;
     padding: 12px 0px;
-    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.4);
-    &-box{
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
+    &-box {
         display: flex;
         justify-content: space-between;
     }
 }
 
-
 //.............main.....................................................................................
 
-.main{
+.main {
     margin-top: 15px;
-    .container{
+    z-index: 1;
+    .container {
         padding: 0px 10px 0px 0px;
     }
-    @media (max-width: 720px){
-        .container{
+    @media (max-width: 720px) {
+        .container {
             padding: 0px 5px 0px 0px;
         }
     }
-    &-box{
+    &-box {
         min-height: 80vh;
         display: grid;
         grid-template-columns: 1fr 4fr;
-        .notes{
+        .notes {
             margin-left: 15px;
             background-color: $color1;
-            box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.4);
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
             border-radius: 3px;
-            .note{
+            .note {
                 height: 10px;
                 position: relative;
                 padding: 20px 20px;
@@ -147,84 +145,88 @@ $color1 : #DDCB8C;
                 background-color: #d6d6d6;
                 margin: 20px 0;
                 border-radius: 5px;
-                display: flex;
+                display: none;
                 align-items: center;
-                overflow-x:hidden;
+                overflow-x: hidden;
                 z-index: 1;
-                p{
+                p {
                     line-height: 50px;
                     position: absolute;
                     white-space: nowrap;
                 }
-                img{
+                img {
                     line-height: 50px;
                     position: absolute;
                     right: 0px;
                     padding: 0px 10px 0px 15px;
                     cursor: pointer;
                     background-color: #d6d6d6;
-
                 }
             }
+            .note.is-working {
+                display: flex;
+            }
         }
-        .notes{//верхний тект
-            &-title{
+        .notes {
+            //верхний тект
+            &-title {
                 flex-wrap: wrap;
                 display: flex;
                 justify-content: space-between;
-                P{
+                P {
                     white-space: nowrap;
                     padding-top: 3px;
                 }
             }
         }
-        @media (max-width: 720px){
-            .notes{
+        @media (max-width: 720px) {
+            .notes {
                 margin-left: 5px;
             }
         }
-        .nav{
+        .nav {
             box-sizing: border-box;
             z-index: 90;
             min-width: 200px;
             border-radius: 3px;
-            background-color: $color1; 
-            box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.4);
+            background-color: $color1;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
         }
-        .nav , .notes{
+        .nav,
+        .notes {
             padding: 25px 18px 18px 18px;
         }
-        @media (max-width: 1200px){
-            .nav{
+        @media (max-width: 1200px) {
+            .nav {
                 border-radius: 0px 3px 3px 0px;
             }
         }
-        @media (max-width: 720px){
-            .nav{
+        @media (max-width: 720px) {
+            .nav {
                 display: none;
-                position: absolute; 
+                position: absolute;
 
                 width: 100%;
                 height: 100%;
             }
         }
-        .nav.is-open{
+        .nav.is-open {
             display: block;
         }
-    } 
+    }
 }
-@media (max-width: 720px){
-    .main-box{
+@media (max-width: 720px) {
+    .main-box {
         grid-template-columns: 1fr;
     }
 }
 
 //...............form on page for add notes.....................................................................................
 
-.form-for-add{ 
+.form-for-add {
     max-width: 100%;
     text-align: right;
-    #input-for-add{
+    #input-for-add {
         resize: vertical;
         height: 50px;
         box-sizing: border-box;
@@ -239,27 +241,54 @@ $color1 : #DDCB8C;
         padding: 10px 20px;
         min-height: 40px;
     }
-    .title-section-add{
+    .title-section-add {
         float: left;
     }
 }
 
 //.............window confirm delete ...............................................................................
 
-.window-confirm-deletion{
-    .window-confirm-deletion-title{
+.window-confirm-deletion {
+    .window-confirm-deletion-title {
         margin-bottom: 5px;
         color: #000;
     }
-    .buttons{
+    .buttons {
         margin-top: 10px;
     }
 }
-.window-confirm-deletion.is-active{
+.window-confirm-deletion.is-active {
     display: block;
 }
 
+.load-icon {
+    display: none;
+    justify-content: center;
+    margin-top: 15px;
+    img {
+        filter: opacity(90%);
+        margin: 0px auto;
+        max-width: 40px;
+    }
+}
+.load-icon.is-working {
+    display: flex;
+    img {
+        animation: linear;
+        animation-iteration-count: infinite;
+        animation-name: load;
+        animation-duration: 1.5s;
+    }
+}
+@keyframes load {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
 
-.is-invisible{
-    display: none; 
+.is-invisible {
+    display: none;
 }

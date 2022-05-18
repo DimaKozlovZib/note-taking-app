@@ -6,83 +6,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/ba32d10d1e.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
     <div class="wrapper">
-        <header class="header">
+        <!--<header class="header">
             <div class="container">
                 <div class="header-box">
                     <a href="" class="page-logo">Заметки</a>
-                    <button class="menu" id="menu">
+                    <!-<button class="menu" id="menu">
                         <span></span>
+                    </button>--
+                </div>
+            </div>
+        </header>-->
+        <main class="main">
+            <aside class="aside" id="Site-navigation">
+                <button class="logo button-navigation">
+                    <div class="img-box">
+                        <img src="image/image-logo.png" alt="" class="logo-image">
+                    </div>
+                    <h1 class="logo-text">Notes</h1>
+                </button>
+                <div class="box-button-navigation">
+                    <button class="search button-navigation">
+                        <div class="img-box">
+                            <img src="image/calendar.png" alt="" class="search-image">
+                        </div>
+                        <h1 class="logo-text">Search</h1>
+                    </button>
+                    <button class="calendar button-navigation">
+                        <div class="img-box">
+                            <img src="image/search.png" alt="" class="calendar-image">
+                        </div>
+                        <h1 class="logo-text">Calendar</h1>
                     </button>
                 </div>
-            </div>
-        </header>
-        <main class="main">
-            <div class="container">
-                <div class="main-box">
-                    <nav class="nav" id="Site-navigation">
-                        <p>Навигация :</p>
-                    </nav>
-                    <article class="notes to-close">
-                        <div class="notes-container">
-                            <form class="form-for-add" name="note">
-                                <label for="note" class="title-section-add"><h3>Добавить запись :</h3></label>
-                                <textarea name="notetext" id="input-for-add"></textarea>
-                                <div class="buttons">
-                                    <button id="add">Добавить</button>
-                                </div>  
-                            </form>
-                            <section class="box-notes">
-                                <div class="notes-title">
-                                    <h3 class="notes-title-text" id="notes-title-text">Все записки :</h3>
+            </aside>
+            <article class="notes to-close">
+                <div class="notes-container" id="notes-container">
+                    <form class="form-for-add" name="note">
+                        <label for="note" class="title-section-add"><h3>add new notes :</h3></label>
+                        <textarea name="notetext" id="input-for-add"></textarea>
+                        <div class="button-box-add">
+                            <button id="add" >
+                                <div class="img-box">
+                                    <img src="image/add.png" alt="" class="logo-image">
                                 </div>
-                                <div class="notes-box" id="note-box">
-                                    <!--<div class="note">
-                                        <p class="note-text">какойто текст...</p>
-                                        <img src="image/delete.svg" alt="">
-                                    </div>-->
-                                </div>
-                            </section>
-
-                            <div class="load-and-noNotes">
-                                <div class="load-icon is-working" id="load-icon">
-                                    <img src="image/load.png" alt="">
-                                </div>
-                                <div class="noNotes-wrapper">
-                                    <p>У вас нету записей.</p>
-                                </div>
-                            </div>
+                                <h1 class="logo-text">Add</h1>
+                            </button>
+                        </div>  
+                    </form>
+                    <section class="box-notes">
+                        <div class="notes-title">
+                            <h3 class="notes-title-text" id="notes-title-text">all your notes :</h3>
                         </div>
-                        <div class="window-confirm-deletion is-invisible">
-                            <h3 class="window-confirm-deletion-title">подтверждение :</h3>
-                            <p>Потвердите что вы хотите удалить запись.</p>
-                            <div class="buttons">
-                                <button class="confirm" id="confirm-button">удалить</button>
-                                <button class="cancel" id="cancel">отмена</button>
-                            </div>
-                        </div>   
-                    </article>
+                        <div class="notes-box" id="note-box">
+                            <!--<div class="note" data-index="${index}">
+                                <button class="tagget"></button>
+                                <p class="note-text">какойто текст...</p>
+                                <span class="star" aria-label="Пометка задачи как важной.">
+                                    <i class="fa-regular fa-star" ></i>
+                                    <i class="fa-regular fa-star" ></i>
+                                </span>
+                            </div>-->
+                        </div>
+                    </section>
+                    <div class="load-and-noNotes">
+                        <div class="noNotes-wrapper">
+                            <p>У вас нету записей.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="window-confirm-deletion is-invisible">
+                    <h3 class="window-confirm-deletion-title">подтверждение :</h3>
+                    <p>Потвердите что вы хотите удалить запись.</p>
+                    <div class="buttons">
+                        <button class="confirm" id="confirm-button">удалить</button>
+                        <button class="cancel" id="cancel">отмена</button>
+                    </div>
+                </div>   
+            </article>
         </main>
-        <footer class="footer to-close">
-            <div class="container"> 
-                <h3>Сделано Димой.</h3>
-            </div>
-        </footer>
-
     </div>
-    
 
 
-
-
-
-    <script src="index.js"></script>
+    <script src="src/index.js" type="module"></script>
+    <script src="src/add.js" type="module"></script>
 </body>
 </html>

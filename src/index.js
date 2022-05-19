@@ -41,7 +41,7 @@ let addNotes = document.getElementById("add").addEventListener( "click" , () => 
     let transaction = baseData.transaction("NotesFilterDate" , "readwrite") //получаем доступ
     .objectStore("NotesFilterDate");// получить хранилище объектов для работы с ним
     let noteString = document.getElementById("input-for-add").value;//form.value
-    
+    document.getElementById("add-form").reset();
 
     let addObject = [{
         Text: noteString,

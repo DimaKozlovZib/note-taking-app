@@ -32,7 +32,7 @@ button {
   background-color: transparent;
   border: none;
   font-weight: 400;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 h1,
@@ -41,7 +41,7 @@ h4,
 h5,
 h6 {
   font-weight: 400;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .wrapper {
@@ -61,10 +61,12 @@ button {
   border: none;
   background: transparent;
 }
+
 button img {
   width: 28px;
   height: 28px;
 }
+
 button .img-box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -79,10 +81,12 @@ button .img-box {
   width: 28px;
   height: 28px;
 }
+
 button:hover img, button:active img {
   -webkit-animation: decrease linear 0.3s;
           animation: decrease linear 0.3s;
 }
+
 button h1, button h2 {
   color: #242424;
 }
@@ -102,6 +106,7 @@ button h1, button h2 {
   display: none;
   cursor: pointer;
 }
+
 .menu span, .menu::before, .menu::after {
   position: absolute;
   height: 2px;
@@ -113,15 +118,19 @@ button h1, button h2 {
   transition: transform 0.15s linear;
   transition: transform 0.15s linear, -webkit-transform 0.15s linear;
 }
+
 .menu::before, .menu::after {
   content: "";
 }
+
 .menu::before {
   top: 7px;
 }
+
 .menu::after {
   bottom: 3px;
 }
+
 .menu span {
   top: 14px;
 }
@@ -130,9 +139,11 @@ button h1, button h2 {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
+
 .menu.is-active::before {
   display: none;
 }
+
 .menu.is-active::after {
   bottom: 0;
   top: 14px;
@@ -147,6 +158,7 @@ button h1, button h2 {
     display: flex;
   }
 }
+
 .page-logo {
   padding-left: 30px;
   text-decoration: none;
@@ -159,11 +171,13 @@ button h1, button h2 {
     padding-left: 5px;
   }
 }
+
 .main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
+
 .main .notes {
   margin-top: 10px;
   margin-left: 275px;
@@ -175,6 +189,7 @@ button h1, button h2 {
   float: left;
   background-color: transparent;
 }
+
 .main .notes .note {
   line-height: 20px;
   padding: 12px 10px;
@@ -197,11 +212,13 @@ button h1, button h2 {
   word-wrap: break-word;
   word-break: break-word;
 }
+
 .main .notes .note.is-working {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
+
 .main .notes-title {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -212,15 +229,18 @@ button h1, button h2 {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+
 .main .notes-title P {
   white-space: nowrap;
   padding-top: 3px;
 }
+
 @media (max-width: 720px) {
   .main .notes {
     margin-left: 5px;
   }
 }
+
 .main .aside {
   position: fixed;
   height: 100vh;
@@ -230,6 +250,7 @@ button h1, button h2 {
   background-color: #DFDFDF;
   padding: 22px 0px 0px 25px;
 }
+
 @media (max-width: 890px) {
   .main .aside {
     position: absolute;
@@ -239,6 +260,7 @@ button h1, button h2 {
     margin-left: 245px;
   }
 }
+
 @media (max-width: 810px) {
   .main .aside {
     position: absolute;
@@ -251,6 +273,7 @@ button h1, button h2 {
     margin-left: 105px;
   }
 }
+
 @media (max-width: 550px) {
   .main .aside {
     position: absolute;
@@ -264,6 +287,7 @@ button h1, button h2 {
     margin-left: 85px;
   }
 }
+
 .main .aside.is-open {
   display: block;
 }
@@ -275,6 +299,7 @@ button h1, button h2 {
   border-radius: 50%;
   border: 2px solid #1f1a1a;
 }
+
 .note .tagget::after {
   content: "";
   display: none;
@@ -288,22 +313,27 @@ button h1, button h2 {
   margin-bottom: 2px;
   z-index: 0;
 }
+
 .note .tagget:hover::after {
   display: block;
 }
+
 .note .tagget.active {
   background-color: #1f1a1a;
 }
+
 .note .tagget.active::after {
   border-color: #DFDFDF;
   display: block;
 }
+
 .note p {
   margin-left: 15px;
   margin-right: 10px;
   width: 100%;
   line-height: 18px;
 }
+
 .note .star {
   content: "";
   line-height: 20px;
@@ -316,12 +346,15 @@ button h1, button h2 {
   min-width: 20px;
   cursor: pointer;
 }
+
 .note .star:hover {
   opacity: 1;
 }
+
 .note .star .star2 {
   display: none;
 }
+
 .note::after {
   z-index: -1;
   bottom: -1px;
@@ -332,10 +365,11 @@ button h1, button h2 {
   position: absolute;
   -webkit-transition: all 0.36s linear;
   transition: all 0.36s linear;
-  content: "";
+  content: '';
   width: 100%;
   background-color: #DFDFDF;
 }
+
 .note:hover:after, .note:active:after {
   height: 100%;
 }
@@ -343,6 +377,7 @@ button h1, button h2 {
 .star.active .star1 {
   display: none;
 }
+
 .star.active .star2 {
   display: block;
   margin-top: 3px;
@@ -352,9 +387,11 @@ button h1, button h2 {
   max-width: 100%;
   text-align: right;
 }
+
 .form-for-add button {
   margin: 3px 0px 0px auto;
 }
+
 .form-for-add #input-for-add {
   font-weight: 300;
   resize: vertical;
@@ -372,6 +409,7 @@ button h1, button h2 {
   padding: 10px 20px;
   min-height: 40px;
 }
+
 .form-for-add .title-section-add {
   float: left;
 }
@@ -380,6 +418,7 @@ button h1, button h2 {
   margin-bottom: 5px;
   color: #000;
 }
+
 .window-confirm-deletion .buttons {
   margin-top: 10px;
 }
@@ -395,6 +434,7 @@ button h1, button h2 {
           justify-content: center;
   margin-top: 14px;
 }
+
 .load-icon img {
   -webkit-filter: opacity(90%);
           filter: opacity(90%);
@@ -408,6 +448,7 @@ button h1, button h2 {
   display: -ms-flexbox;
   display: flex;
 }
+
 .load-icon.is-working img {
   -webkit-animation: linear;
           animation: linear;
@@ -440,6 +481,7 @@ button h1, button h2 {
             transform: rotateZ(360deg);
   }
 }
+
 .noNotes-wrapper {
   display: none;
   margin-top: 6px;
@@ -488,6 +530,8 @@ button h1, button h2 {
     height: 28px;
   }
 }
+
 .box-button-navigation {
   margin-top: 100px;
 }
+/*# sourceMappingURL=index.css.map */

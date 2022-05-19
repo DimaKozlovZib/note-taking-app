@@ -239,7 +239,7 @@ button{
     .aside.is-open {
         display: block;
     }
-}
+}//
 .note{
     .tagget{
         content: "";
@@ -267,7 +267,7 @@ button{
 
             &::after{
                 border-color: #DFDFDF;
-                display: block;
+                display: block; 
             }
         }
     }

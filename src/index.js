@@ -61,7 +61,7 @@ function build_HTML_elements(baseData){
     .objectStore("NotesFilterDate");
     let request = transaction.openCursor();
     //let item = objectStoreRead.get("Text");
-    let noteBox = document.querySelector("#note-box")
+    let noteBox = document.querySelector("#note-box");
 
     request.onsuccess = () => {
         let cursor = request.result;

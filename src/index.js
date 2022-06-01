@@ -49,11 +49,20 @@ let addNotes = document.getElementById("add").addEventListener( "click" , () => 
         isImportant : false
     }];
     let notesAdd = transaction.add(addObject[0]);
-
-    notesAdd.onsuccess = () => console.log("всё ок");
-    
-    //noteString = localStorage.listNotes ? [localStorage.listNotes , noteString].join("@#") : noteString;//для разделения сторок
-    //localStorage.setItem("listNotes" , noteString);
+    notesAdd.onsuccess = (event) => {
+        let boxWithNotes = document.querySelector("#note-box");
+  
+        boxWithNotes.insertAdjacentHTML('afterbegin', 
+        `<div class="note" data-id="${event.target.result}">
+            <button class="tagget"></button>
+            <p class="note-text">${noteString}</p>
+            <span class="star" aria-label="Пометка задачи как важной.">
+                <i class="fa-regular fa-star star1"></i>
+                <i class="fa-solid fa-star star2" ></i>
+            </span>
+        </div>`);
+        taggetButtonsListener();
+    };
 });
 
 function build_HTML_elements(baseData){
@@ -97,23 +106,23 @@ function taggetButtonsListener() {
     let array = document.querySelectorAll(".tagget");
 
     array.forEach(item => {
-        item.addEventListener("click", () => {
+        item.onclick = () => {
             if (item.classList.contains("active")) {
                 item.classList.remove("active");
             } else {
                 item.classList.add("active");
             };
-        });
+        };
     });
 
     document.querySelectorAll(".star").forEach(item => {
-        item.addEventListener("click", () => {
+        item.onclick = () => {
             if (item.classList.contains("active")) {
                 item.classList.remove("active");
             } else {
                 item.classList.add("active");
             }; 
-        })
+        }
     });
 }
 

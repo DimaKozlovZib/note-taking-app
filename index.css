@@ -6,7 +6,7 @@
 
 body {
   background-color: #F6F4F4;
-  font-family: "Lato", serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   height: 100vh;
 }
@@ -31,11 +31,13 @@ body {
 button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
   font-weight: 400;
   font-family: 'Inter', sans-serif;
 }
 
 h1,
+h2,
 h3,
 h4,
 h5,
@@ -57,7 +59,6 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  cursor: pointer;
   border: none;
   background: transparent;
 }
@@ -82,7 +83,7 @@ button .img-box {
   height: 28px;
 }
 
-button:hover img, button:active img {
+button:hover img.decrease-icon, button:active img.decrease-icon {
   -webkit-animation: decrease linear 0.3s;
           animation: decrease linear 0.3s;
 }
@@ -159,19 +160,6 @@ button h1, button h2 {
   }
 }
 
-.page-logo {
-  padding-left: 30px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #1f1a1a;
-}
-
-@media (max-width: 450px) {
-  .page-logo {
-    padding-left: 5px;
-  }
-}
-
 .main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -235,6 +223,10 @@ button h1, button h2 {
   padding-top: 3px;
 }
 
+.main .notes-box {
+  margin-top: 10px;
+}
+
 @media (max-width: 720px) {
   .main .notes {
     margin-left: 5px;
@@ -248,7 +240,7 @@ button h1, button h2 {
           box-sizing: border-box;
   width: 250px;
   background-color: #DFDFDF;
-  padding: 22px 0px 0px 25px;
+  padding: 10px 0px 0px 25px;
 }
 
 @media (max-width: 890px) {
@@ -290,6 +282,10 @@ button h1, button h2 {
 
 .main .aside.is-open {
   display: block;
+}
+
+.box-notes {
+  margin-top: 15px;
 }
 
 .note .tagget {
@@ -389,11 +385,11 @@ button h1, button h2 {
 }
 
 .form-for-add button {
-  margin: 3px 0px 0px auto;
+  margin: 5px 0px 0px auto;
+  font-size: 15px;
 }
 
 .form-for-add #input-for-add {
-  font-weight: 300;
   resize: vertical;
   height: 50px;
   -webkit-box-sizing: border-box;
@@ -403,10 +399,11 @@ button h1, button h2 {
   width: 100%;
   font-size: 14px;
   border: none;
-  background-color: #DFDFDF;
-  border-radius: 3px;
+  border-bottom: 2px solid #1f1a1a;
+  background-color: #F6F4F4;
+  border-radius: 2px;
   outline: none;
-  padding: 10px 20px;
+  padding: 10px 15px;
   min-height: 40px;
 }
 
@@ -414,72 +411,37 @@ button h1, button h2 {
   float: left;
 }
 
-.window-confirm-deletion .window-confirm-deletion-title {
-  margin-bottom: 5px;
-  color: #000;
-}
-
-.window-confirm-deletion .buttons {
-  margin-top: 10px;
-}
-
-.window-confirm-deletion.is-active {
-  display: block;
-}
-
-.load-icon {
-  display: none;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 14px;
-}
-
-.load-icon img {
-  -webkit-filter: opacity(90%);
-          filter: opacity(90%);
-  width: 40px;
-  max-width: 40px;
-  height: 40px;
-}
-
-.load-icon.is-working {
+.tab-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-size: 18px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.load-icon.is-working img {
-  -webkit-animation: linear;
-          animation: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-name: load;
-          animation-name: load;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
+.tab-button-icon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
 }
 
-@-webkit-keyframes load {
-  0% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-  100% {
-    -webkit-transform: rotateZ(360deg);
-            transform: rotateZ(360deg);
-  }
+.tab-button-icon img {
+  width: 22px;
+  height: 22px;
 }
 
-@keyframes load {
-  0% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-  100% {
-    -webkit-transform: rotateZ(360deg);
-            transform: rotateZ(360deg);
-  }
+.tab-button h2 {
+  font-size: 18px;
+  color: #242424;
+}
+
+.form-wrapper {
+  padding: 13px 15px;
+  background-color: #DFDFDF;
+  border-radius: 2px;
 }
 
 .noNotes-wrapper {

@@ -3,9 +3,11 @@
     margin: 0;
     outline: none;
 }
+//font-family: 'Inter', sans-serif;
+//font-family: 'Roboto', sans-serif;
 body {
     background-color: #F6F4F4;
-    font-family: "Lato", serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     height: 100vh;
 }
@@ -25,10 +27,12 @@ $color1: #DFDFDF;
 button {
     background-color: transparent;
     border: none;
+    cursor: pointer;
     font-weight: 400;
     font-family: 'Inter', sans-serif;
 }
 h1,
+h2,
 h3,
 h4,
 h5,
@@ -47,7 +51,6 @@ button{
     text-align: right;
     display: flex;
     align-items: center;
-    cursor: pointer;
     border: none;
     background: transparent;
     img{
@@ -64,7 +67,7 @@ button{
         height: 28px;
     }
     &:hover, &:active{
-        img{
+        img.decrease-icon{
             animation: decrease linear 0.3s;
         }
     }
@@ -128,20 +131,6 @@ button{
     }
 }
 
-//.............header...............................................................................
-
-.page-logo {
-    padding-left: 30px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #1f1a1a;
-}
-@media (max-width: 450px) {
-    .page-logo {
-        padding-left: 5px;
-    }
-}
-
 //.............main.....................................................................................
 
 .main {
@@ -155,6 +144,7 @@ button{
         padding-right: 25px;
         float: left;
         background-color: transparent;
+
         .note {
             line-height: 20px;
             padding: 12px 10px;
@@ -186,6 +176,9 @@ button{
                 padding-top: 3px;
             }
         }
+        &-box{
+            margin-top: 10px;
+        }
     }
     @media (max-width: 720px) {
         .notes {
@@ -199,7 +192,7 @@ button{
         width: 250px;
         background-color: $color1;
         
-        padding: 22px 0px 0px 25px;
+        padding: 10px 0px 0px 25px;
     }
     @media (max-width: 890px) {
         .aside {
@@ -240,6 +233,9 @@ button{
         display: block;
     }
 }//
+.box-notes{
+    margin-top: 15px;
+}
 .note{
     .tagget{
         content: "";
@@ -330,11 +326,12 @@ button{
 .form-for-add {
     max-width: 100%;
     text-align: right;
+    
     button{
-        margin: 3px 0px 0px auto ;
+        margin: 5px 0px 0px auto;
+        font-size: 15px; 
     }
     #input-for-add {
-        font-weight: 300;
         resize: vertical;
         height: 50px;
         box-sizing: border-box;
@@ -343,60 +340,49 @@ button{
         width: 100%;
         font-size: 14px;
         border: none;
-        background-color: $color1;
-        border-radius: 3px;
+        border-bottom: 2px solid #1f1a1a;
+        background-color: #F6F4F4;
+        border-radius: 2px;
         outline: none;
-        padding: 10px 20px;
+        padding: 10px 15px;
         min-height: 40px;
     }
     .title-section-add {
         float: left;
     }
 }
-
-//.............window confirm delete ...............................................................................
-
-.window-confirm-deletion {
-    .window-confirm-deletion-title {
-        margin-bottom: 5px;
-        color: #000;
-    }
-    .buttons {
-        margin-top: 10px;
-    }
-}
-.window-confirm-deletion.is-active {
-    display: block;
-}
-.load-icon {
-    display: none;
-    justify-content: center;
-    margin-top: 14px;
-    img {
-        filter: opacity(90%);
-        width: 40px;
-        max-width: 40px;
-        height: 40px;
-    }
-}
-.load-icon.is-working {
+.tab-button{
+    
     display: flex;
-    img {
-        animation: linear;
-        animation-iteration-count: infinite;
-        animation-name: load;
-        animation-duration: 1.5s;
+    font-size: 18px;
+    align-items: center;
+    &-icon{
+        position: relative;
+        width: 22px;
+        height: 22px;
+        margin-right: 10px;
+        img{
+            width: 22px;
+            height: 22px;
+        }
     }
+    h2{
+        font-size: 18px;
+        color: #242424
+    }
+}
+.form-wrapper{
+    padding: 13px 15px;
+    background-color: $color1;
+    border-radius: 2px;
 }
 
-@keyframes load {
-    0% {
-        transform: rotateZ(0deg);
-    }
-    100% {
-        transform: rotateZ(360deg);
-    }
-}
+
+
+
+
+
+
 
 .noNotes-wrapper {
     display: none;
@@ -419,6 +405,9 @@ button{
 .is-invisible{
     display: none;
 }
+
+
+
 .button-navigation{
     margin-top: 20px;
 }

@@ -39,15 +39,20 @@ document.getElementById("add").onclick = (event) => { return event.preventDefaul
 
 let addNotes = document.getElementById("add").addEventListener("click", () => {
     let noteString = document.getElementById("input-for-add").value;//form.value
-    if (noteString) { return; };
+    console.log(noteString)
+    if (!noteString) { return; };
     document.getElementById("add-form").reset();
+    let classListIconImportant = document.querySelector("#addForm__icon-important").classList;
+    let notesIsImportant = classListIconImportant.contains("active") ? true : false;
+    !notesIsImportant || classListIconImportant.remove("active");
+
     let transaction = baseData.transaction("NotesFilterDate", "readwrite") //получаем доступ
         .objectStore("NotesFilterDate");// получить хранилище объектов для работы с ним
 
     let addObject = [{
         Text: noteString,
         Date: TimeNow(),
-        isImportant: false
+        isImportant: notesIsImportant
     }];
     let notesAdd = transaction.add(addObject[0]);
     notesAdd.onsuccess = (event) => {
@@ -86,7 +91,7 @@ function build_HTML_elements(baseData) {
                 `<div class="note" data-id="${key}">
                     <button class="tagget"></button>
                     <p class="note-text">${Text}</p>
-                    <span class="star the-star" aria-label="Пометка записи как важной.">
+                    <span class="star the-star ${important}" aria-label="Пометка записи как важной.">
                         <i class="fa-regular fa-star star1"></i>
                         <i class="fa-solid fa-star star2" ></i>
                     </span>

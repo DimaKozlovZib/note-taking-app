@@ -17,9 +17,15 @@ let TimeNow = function () {
     }
     return `${Day}.${Month}.${year}`;
 }
-
+function activateHtmlElem(item) {
+    if (item.classList.contains("active")) {
+        item.classList.remove("active");
+    } else {
+        item.classList.add("active");
+    };
+}
 function connectBD() {
-    var openRequest = indexedDB.open("notes", 2);
+    var openRequest = indexedDB.open("notes", 3);
     openRequest.onerror = (event) => {
         console.error("Error", openRequest.error);
     };
@@ -28,7 +34,7 @@ function connectBD() {
         build_HTML_elements(openRequest.result);
     };
     openRequest.onupgradeneeded = (e) => {
-        e.currentTarget.result.createObjectStore("NotesFilterDate", { KeyPath: "id", autoIncrement: true });
+        e.currentTarget.result.createObjectStore("NotesFilterDate", { autoIncrement: true });
         connectBD();
     };
 };//db
@@ -39,7 +45,6 @@ document.getElementById("add").onclick = (event) => { return event.preventDefaul
 
 let addNotes = document.getElementById("add").addEventListener("click", () => {
     let noteString = document.getElementById("input-for-add").value;//form.value
-    console.log(noteString)
     if (!noteString) { return; };
     document.getElementById("add-form").reset();
     let classListIconImportant = document.querySelector("#addForm__icon-important").classList;
@@ -98,7 +103,8 @@ function build_HTML_elements(baseData) {
                 </div>`);//вставляем в родителя
             cursor.continue();
         } else {
-            taggetButtonsListener();
+            taggetButtonsListener(cursor);
+            return;
         }
     }
 
@@ -108,35 +114,38 @@ function build_HTML_elements(baseData) {
 
 
 
-function taggetButtonsListener() {
+function taggetButtonsListener(cursor) {
     let array = document.querySelectorAll(".tagget");
 
     array.forEach(item => {
         item.onclick = () => {
-            if (item.classList.contains("active")) {
-                item.classList.remove("active");
-            } else {
-                item.classList.add("active");
-            };
+            activateHtmlElem(item)
         };
     });
 
-    document.querySelectorAll(".the-star").forEach(item => {
+    document.querySelectorAll(".star").forEach(item => {
         item.onclick = () => {
-            if (item.classList.contains("active")) {
-                item.classList.remove("active");
-            } else {
-                item.classList.add("active");
-            };
-        }
+            activateHtmlElem(item);
+            console.log("jhshuhsuhg")
+            let indexThisNotes = item.parentElement.getAttribute("data-id");
+            let store = baseData.transaction("NotesFilterDate", "readwrite")
+                .objectStore("NotesFilterDate"); //получаем доступ
+            let object = store.get(Number(indexThisNotes))
+            object.onsuccess = () => {
+                if (item.classList.contains("active")) {
+                    object.result.isImportant = true;
+
+                } else {
+                    object.result.isImportant = false;
+                };
+                store.put(object.result, Number(indexThisNotes))
+            }
+        };
     });
 }
+document.querySelector("#addForm__icon-important").onclick = (item) => { activateHtmlElem(item) };
 
 document.querySelector("#tab-button-add").addEventListener("click", () => {
-    let classForm = document.querySelector("#add-form").classList;
-    if (classForm.contains("active")) {
-        classForm.remove("active");
-    } else {
-        classForm.add("active");
-    }
+    let Form = document.querySelector("#add-form");
+    activateHtmlElem(Form);
 })

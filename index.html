@@ -59,6 +59,10 @@
                         <form class="form-for-add" name="note" id="add-form">
                             <input name="notetext" id="input-for-add" placeholder="Добавить запись"></input>
                             <div class="button-box-add">
+                                <span class="the-star" aria-label="Пометка задачи как важной." id="addForm__icon-important">
+                                    <i class="fa-regular fa-star star1"></i>
+                                    <i class="fa-solid fa-star star2" ></i>
+                                </span>
                                 <button id="add" >
                                     Добавить
                                 </button>
@@ -68,7 +72,12 @@
                     <!--контейнер с записями пользователя-->
                     <section class="box-notes">
                         <div class="notes-title">
-                            <h3 class="notes-title-text" id="notes-title-text">all your notes :</h3>
+                            <h3 class="notes-title-text" id="notes-title-text">ваши записи :</h3>
+                            <button class="delete-button">
+                                <i class="fa-regular fa-trash-can"></i>
+                                <h3>удалить</h3>
+                                
+                            </button>
                         </div>
                         <div class="notes-box" id="note-box">
                             <!--<div class="note" data-index="${index}">

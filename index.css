@@ -223,6 +223,28 @@ button h1, button h2 {
   padding-top: 3px;
 }
 
+.main .notes-title button {
+  color: #000;
+  opacity: 0.7;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.main .notes-title button i {
+  font-size: 17px;
+  margin-right: 7px;
+}
+
+@media (max-width: 550px) {
+  .main .notes-title button h3 {
+    display: none;
+  }
+}
+
+.main .notes-title button:hover {
+  opacity: 1;
+}
+
 .main .notes-box {
   margin-top: 10px;
 }
@@ -330,27 +352,6 @@ button h1, button h2 {
   line-height: 18px;
 }
 
-.note .star {
-  content: "";
-  line-height: 20px;
-  float: right;
-  height: 20px;
-  opacity: 0.7;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  font-size: 16px;
-  min-width: 20px;
-  cursor: pointer;
-}
-
-.note .star:hover {
-  opacity: 1;
-}
-
-.note .star .star2 {
-  display: none;
-}
-
 .note::after {
   z-index: -1;
   bottom: -1px;
@@ -370,11 +371,32 @@ button h1, button h2 {
   height: 100%;
 }
 
-.star.active .star1 {
+.the-star {
+  content: "";
+  line-height: 20px;
+  float: right;
+  height: 20px;
+  opacity: 0.7;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  font-size: 16px;
+  min-width: 20px;
+  cursor: pointer;
+}
+
+.the-star:hover {
+  opacity: 1;
+}
+
+.the-star .star2 {
   display: none;
 }
 
-.star.active .star2 {
+.the-star.active .star1 {
+  display: none;
+}
+
+.the-star.active .star2 {
   display: block;
   margin-top: 3px;
 }
@@ -382,10 +404,10 @@ button h1, button h2 {
 .form-for-add {
   max-width: 100%;
   text-align: right;
+  display: none;
 }
 
 .form-for-add button {
-  margin: 5px 0px 0px auto;
   font-size: 15px;
 }
 
@@ -395,7 +417,7 @@ button h1, button h2 {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   max-height: 250px;
-  margin-top: 15px;
+  margin-top: 13px;
   width: 100%;
   font-size: 14px;
   border: none;
@@ -411,7 +433,22 @@ button h1, button h2 {
   float: left;
 }
 
+.form-for-add.active {
+  display: block;
+}
+
+.form-for-add .button-box-add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0px 0px 5px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .tab-button {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -441,7 +478,7 @@ button h1, button h2 {
 .form-wrapper {
   padding: 13px 15px;
   background-color: #DFDFDF;
-  border-radius: 2px;
+  border-radius: 10px;
 }
 
 .noNotes-wrapper {

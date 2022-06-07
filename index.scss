@@ -175,6 +175,23 @@ button{
                 white-space: nowrap;
                 padding-top: 3px;
             }
+            button{
+                color: #000;
+                opacity: 0.7;
+                transition: all 0.3s;
+                i{
+                   font-size: 17px;
+                   margin-right: 7px; 
+                }
+                @media (max-width: 550px){
+                    h3{
+                        display: none;
+                    } 
+                }
+                &:hover{
+                    opacity: 1;
+                }
+            }
         }
         &-box{
             margin-top: 10px;
@@ -274,23 +291,7 @@ button{
         line-height: 18px;
 
     }
-    .star{
-        content: "";
-        line-height: 20px;
-        float: right;
-        height: 20px;
-        opacity: 0.7;
-        transition: all 0.3s;
-        font-size: 16px;
-        min-width: 20px;
-        cursor: pointer;
-        &:hover{
-            opacity: 1;
-        }
-        .star2{
-            display: none;
-        }
-    }
+    
     &::after{
         z-index: -1; 
         bottom: -1px;
@@ -308,7 +309,24 @@ button{
         height: 100%; 
     }
 }
-.star.active{
+.the-star{
+        content: "";
+        line-height: 20px;
+        float: right;
+        height: 20px;
+        opacity: 0.7;
+        transition: all 0.3s;
+        font-size: 16px;
+        min-width: 20px;
+        cursor: pointer;
+        &:hover{
+            opacity: 1;
+        }
+        .star2{
+            display: none;
+        }
+    }
+.the-star.active{
     .star1{
         display: none;
     }
@@ -326,9 +344,8 @@ button{
 .form-for-add {
     max-width: 100%;
     text-align: right;
-    
+    display: none;
     button{
-        margin: 5px 0px 0px auto;
         font-size: 15px; 
     }
     #input-for-add {
@@ -336,7 +353,7 @@ button{
         height: 50px;
         box-sizing: border-box;
         max-height: 250px;
-        margin-top: 15px;
+        margin-top: 13px;
         width: 100%;
         font-size: 14px;
         border: none;
@@ -350,9 +367,17 @@ button{
     .title-section-add {
         float: left;
     }
+    &.active{
+        display: block;
+    }
+    .button-box-add{
+        display: flex;
+        margin: 10px 0px 0px 5px;
+        justify-content: space-between;
+    }
 }
 .tab-button{
-    
+    width: 100%;
     display: flex;
     font-size: 18px;
     align-items: center;
@@ -369,12 +394,12 @@ button{
     h2{
         font-size: 18px;
         color: #242424
-    }
+    } 
 }
 .form-wrapper{
     padding: 13px 15px;
     background-color: $color1;
-    border-radius: 2px;
+    border-radius: 10px;
 }
 
 

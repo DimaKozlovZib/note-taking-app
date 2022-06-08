@@ -25,16 +25,25 @@ function activateHtmlElem(item) {
     };
 }
 function connectBD() {
-    var openRequest = indexedDB.open("notes", 3);
+    var openRequest = indexedDB.open("notes", 5);
     openRequest.onerror = (event) => {
         console.error("Error", openRequest.error);
     };
     openRequest.onsuccess = (event) => {
         baseData = openRequest.result;
+
+        baseData.onversionchange = function () {
+            baseData.close();
+            alert("База данных устарела, пожалуста, перезагрузите страницу.")
+        };
         build_HTML_elements(openRequest.result);
     };
     openRequest.onupgradeneeded = (e) => {
-        e.currentTarget.result.createObjectStore("NotesFilterDate", { autoIncrement: true });
+        let db = openRequest.result;
+        console.log("uduhuhsdvuhu")
+        if (!db.objectStoreNames.contains("NotesFilterDate")) { // если хранилище не существует
+            db.createObjectStore("NotesFilterDate", { autoIncrement: true }); // создаем хранилище
+        }
         connectBD();
     };
 };//db
@@ -143,8 +152,9 @@ function taggetButtonsListener(cursor) {
         };
     });
 }
-document.querySelector("#addForm__icon-important").onclick = (item) => { activateHtmlElem(item) };
-
+document.querySelector("#addForm__icon-important").onclick = (item) => {
+    activateHtmlElem(document.querySelector("#addForm__icon-important"))
+};
 document.querySelector("#tab-button-add").addEventListener("click", () => {
     let Form = document.querySelector("#add-form");
     activateHtmlElem(Form);

@@ -228,6 +228,7 @@ button h1, button h2 {
   opacity: 0.7;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  display: none;
 }
 
 .main .notes-title button i {
@@ -243,6 +244,12 @@ button h1, button h2 {
 
 .main .notes-title button:hover {
   opacity: 1;
+}
+
+.main .notes-title button.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .main .notes-box {

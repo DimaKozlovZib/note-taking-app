@@ -112,7 +112,7 @@ function build_HTML_elements(baseData) {
                 </div>`);//вставляем в родителя
             cursor.continue();
         } else {
-            taggetButtonsListener(cursor);
+            taggetButtonsListener();
             return;
         }
     }
@@ -123,12 +123,21 @@ function build_HTML_elements(baseData) {
 
 
 
-function taggetButtonsListener(cursor) {
-    let array = document.querySelectorAll(".tagget");
+function taggetButtonsListener() {
 
-    array.forEach(item => {
+    document.querySelectorAll(".tagget").forEach(item => {
         item.onclick = () => {
             activateHtmlElem(item)
+            let activeButtons = document.querySelectorAll(".tagget.active");
+            if (activeButtons.length === 0) {
+                let delectButton = document.querySelector("#delete-button");
+                if (delectButton.classList.contains('active')) {
+                    delectButton.classList.remove('active');
+                }
+                return;
+            };
+            let delectButton = document.querySelector("#delete-button");
+            delectButton.classList.add("active");
         };
     });
 

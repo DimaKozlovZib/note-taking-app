@@ -168,3 +168,17 @@ document.querySelector("#tab-button-add").addEventListener("click", () => {
     let Form = document.querySelector("#add-form");
     activateHtmlElem(Form);
 })
+document.querySelector("#delete-button").onclick = () => {
+    let store = baseData.transaction("NotesFilterDate", "readwrite")
+        .objectStore("NotesFilterDate"); //получаем доступ
+    console.log(document.querySelectorAll(".tagget.active"))
+    document.querySelectorAll(".tagget.active").forEach((item) => {
+        let parentElem = item.parentElement;
+        let i = parentElem.getAttribute("data-id");
+        let request = store.delete(Number(i));
+
+        request.onsuccess = () => {
+            parentElem.remove();
+        }
+    })
+}

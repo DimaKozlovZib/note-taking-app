@@ -179,6 +179,7 @@ document.querySelector("#delete-button").onclick = () => {
 
         request.onsuccess = () => {
             parentElem.remove();
+            document.querySelector("#delete-button").classList.remove("active");
         }
     })
 }

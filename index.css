@@ -360,14 +360,15 @@ button h1, button h2 {
 @media (max-width: 550px) {
   .main .aside {
     position: absolute;
-    width: 61px;
-    padding-left: 15px;
+    width: auto;
+    padding: 0px 13px;
   }
   .main .aside .img-box {
     margin: 0;
   }
   .main .notes {
-    margin-left: 85px;
+    margin-left: 69px;
+    padding-right: 12px;
   }
 }
 

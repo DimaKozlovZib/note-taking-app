@@ -278,14 +278,15 @@ button{
     @media (max-width: 550px) {
         .aside {
             position: absolute;
-            width: 61px;
-            padding-left: 15px;
+            width: auto;
+            padding: 0px 13px;
             .img-box{
                 margin: 0;
             }
         }
         .notes{
-            margin-left: 85px;
+            margin-left: 69px;
+            padding-right: 12px;
         }
     }
     .aside.is-open {

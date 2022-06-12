@@ -113,10 +113,9 @@ function build_HTML_elements(baseData) {
             cursor.continue();
         } else {
             taggetButtonsListener();
-            return;
         }
     }
-
+    document.querySelector("#load-window").classList.add("close");
 }
 
 

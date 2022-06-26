@@ -91,17 +91,28 @@ function build_HTML_elements(baseData) {
     let request = transaction.openCursor();
     //let item = objectStoreRead.get("Text");
     let noteBox = document.querySelector("#note-box");
-
+    let date, containerWithNotes;
     request.onsuccess = () => {
         let cursor = request.result;
         let object, key, Text, important;
         if (cursor) {
-            object = cursor.value
-            key = cursor.key
-            Text = object.Text
+            object = cursor.value;
+            key = cursor.key;
+            Text = object.Text;
             important = object.isImportant ? "active" : "";
-
-            noteBox.insertAdjacentHTML('afterbegin',
+            console.log(date)
+            if (!(date == object.Date)) {
+                date = object.Date;
+                console.log(date)
+                noteBox.insertAdjacentHTML("afterbegin",
+                    `<div data-date="${object.Date}">
+                        <h2>${object.Date}</h2>
+                        <div class="notes-container"></div>
+                    </div>`);
+                containerWithNotes = document.querySelector(`[data-date*="${object.Date}"] > .notes-container`);
+                //контейнер в котором хранятся записи с одинаковой датой 
+            }
+            containerWithNotes.insertAdjacentHTML("beforeend",
                 `<div class="note" data-id="${key}">
                     <button class="tagget"></button>
                     <p class="note-text">${Text}</p>

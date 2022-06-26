@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   outline: none;
+  text-decoration: none;
 }
 
 body {
@@ -9,9 +10,14 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   height: 100vh;
+  overflow: hidden;
 }
 
-.container {
+a {
+  color: inherit;
+}
+
+.container, [class*=__container] {
   max-width: 1200px;
   margin: 0px auto;
   padding: 0px 10px;
@@ -161,20 +167,25 @@ button h1, button h2 {
   }
 }
 
-.main {
+/*...header...........*/
+.header {
+  padding: 10px 0px;
+  background-color: #38302e;
+  color: #fff;
+}
+
+.header__contaier {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 100%;
 }
 
-.main .load-window, .main .notes {
-  min-height: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+.header__logo {
+  font-size: 12px;
 }
 
-.main .load-window {
+/*....load window.......*/
+.load-window {
   width: 100%;
   height: 100%;
   top: 0;
@@ -194,7 +205,7 @@ button h1, button h2 {
   background-color: #F6F4F4;
 }
 
-.main .load-window .load-icon {
+.load-window .load-icon {
   border: 2px solid #DFDFDF;
   border-top: 2px solid #242424;
   border-radius: 50%;
@@ -226,14 +237,27 @@ button h1, button h2 {
   }
 }
 
-.main .load-window.close {
+.load-window.close {
   display: none;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.main .load-window, .main .notes {
+  min-height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .main .notes {
   width: 100vw;
   margin-top: 10px;
-  margin-left: 275px;
+  margin-left: 25px;
   padding-right: 25px;
   float: left;
   background-color: transparent;
@@ -316,16 +340,16 @@ button h1, button h2 {
 
 .main .notes-box {
   margin-top: 10px;
+  overflow: auto;
+  scrollbar-width: none;
 }
 
-@media (max-width: 720px) {
-  .main .notes {
-    margin-left: 5px;
-  }
+.main .notes-box::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .main .aside {
-  position: fixed;
   height: 100vh;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -336,39 +360,26 @@ button h1, button h2 {
 
 @media (max-width: 890px) {
   .main .aside {
-    position: absolute;
     width: 220px;
-  }
-  .main .notes {
-    margin-left: 245px;
   }
 }
 
 @media (max-width: 810px) {
   .main .aside {
-    position: absolute;
     width: 80px;
   }
   .main .aside .logo-text {
     display: none;
   }
-  .main .notes {
-    margin-left: 105px;
-  }
 }
 
 @media (max-width: 550px) {
   .main .aside {
-    position: absolute;
     width: auto;
     padding: 0px 13px;
   }
   .main .aside .img-box {
     margin: 0;
-  }
-  .main .notes {
-    margin-left: 69px;
-    padding-right: 12px;
   }
 }
 

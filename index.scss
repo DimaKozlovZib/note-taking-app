@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     outline: none;
+    text-decoration: none;
 }
 //font-family: 'Inter', sans-serif;
 //font-family: 'Roboto', sans-serif;
@@ -10,8 +11,12 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     height: 100vh;
+    overflow: hidden;
 }
-.container {
+a{
+    color: inherit;
+}
+.container , [class*=__container]{
     max-width: 1200px;
     margin: 0px auto;
     padding: 0px 10px;
@@ -23,6 +28,7 @@ body {
 }
 
 $color1: #DFDFDF;
+$blackColor: #38302e;
 
 button {
     background-color: transparent;
@@ -132,7 +138,58 @@ button{
     }
 }
 
+/*...header...........*/
+
+.header{
+    padding: 10px 0px;
+    background-color: $blackColor;
+    color: #fff;
+    &__contaier{
+        display: flex;
+    }
+    &__logo{
+        font-size: 12px;
+    }
+}
+
+
+/*....load window.......*/
+
+.load-window{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    margin-top: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 900;
+    background-color: #F6F4F4;
+    .load-icon{
+        border: 2px solid#DFDFDF;
+        border-top: 2px solid #242424;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        animation: rotateZ 0.7s linear infinite;
+        @keyframes rotateZ {
+            0%{
+                transform: rotateZ(0deg);
+            }
+            100%{
+                transform: rotateZ(360deg);
+            }
+        }
+    }
+    &.close{
+        display: none;
+    }
+}
+
 //.............main.....................................................................................
+
 
 .main {
     display: flex;
@@ -142,42 +199,10 @@ button{
         
         box-sizing: border-box;
     }
-    .load-window{
-        width: 100%;
-        height: 100%;
-        top: 0;
-        bottom: 0;
-        margin-top: -10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        z-index: 900;
-        background-color: #F6F4F4;
-        .load-icon{
-            border: 2px solid#DFDFDF;
-            border-top: 2px solid #242424;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            animation: rotateZ 0.7s linear infinite;
-            @keyframes rotateZ {
-                0%{
-                    transform: rotateZ(0deg);
-                }
-                100%{
-                    transform: rotateZ(360deg);
-                }
-            }
-        }
-        &.close{
-            display: none;
-        }
-    }
     .notes {
         width: 100vw;
         margin-top: 10px;
-        margin-left: 275px;
+        margin-left: 25px;
         padding-right: 25px;
         float: left;
         background-color: transparent;
@@ -237,15 +262,15 @@ button{
         }
         &-box{
             margin-top: 10px;
-        }
-    }
-    @media (max-width: 720px) {
-        .notes {
-            margin-left: 5px;
+            overflow: auto;
+            scrollbar-width: none;
+            &::-webkit-scrollbar{
+                width: 0;
+                height: 0;
+            }
         }
     }
     .aside {
-        position: fixed;
         height: 100vh;
         box-sizing: border-box;
         width: 250px;
@@ -255,38 +280,25 @@ button{
     }
     @media (max-width: 890px) {
         .aside {
-            position: absolute;
             width: 220px;
-        }
-        .notes{
-            margin-left: 245px;
         }
     }
     @media (max-width: 810px) {
         .aside {
-            position: absolute;
             width: 80px;
 
             .logo-text{
                 display: none;
             }
         }
-        .notes{
-            margin-left: 105px;
-        }
     }
     @media (max-width: 550px) {
         .aside {
-            position: absolute;
             width: auto;
             padding: 0px 13px;
             .img-box{
                 margin: 0;
             }
-        }
-        .notes{
-            margin-left: 69px;
-            padding-right: 12px;
         }
     }
     .aside.is-open {
@@ -368,7 +380,7 @@ button{
         .star2{
             display: none;
         }
-    }
+}
 .the-star.active{
     .star1{
         display: none;
@@ -469,7 +481,6 @@ button{
     font-size: 14px;
     text-align: center;
 }
-
 .is-invisible{
     display: none;
 }

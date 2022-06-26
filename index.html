@@ -12,25 +12,19 @@
     <title>notes app |by Dima|</title>
 </head>
 <body>
+    <!--<button class="menu" id="menu">
+        <span></span>
+    </button>-->
     <div class="wrapper">
-        <!--<header class="header">
-            <div class="container">
-                <div class="header-box">
-                    <a href="" class="page-logo">Заметки</a>
-                    <!-<button class="menu" id="menu">
-                        <span></span>
-                    </button>--
-                </div>
-            </div>fs
-        </header>-->
+        <header class="header">
+            <div class="header__container">
+                <a href="#" class="header__logo">
+                    <h1 class="logo-text">Notes</h1>
+                </a>
+            </div>
+        </header>
         <main class="main">
             <aside class="aside" id="Site-navigation">
-                <button class="logo button-navigation">
-                    <div class="img-box">
-                        <img src="image/image-logo.png" alt="" class="logo-image decrease-icon">
-                    </div>
-                    <h1 class="logo-text">Notes</h1>
-                </button>
                 <div class="box-button-navigation">
                     <button class="search button-navigation">
                         <div class="img-box">
@@ -47,7 +41,7 @@
                 </div>
             </aside>
 
-            <article class="notes to-close">
+            <section class="notes to-close">
                 <div class="load-window" id="load-window">
                     <span class="load-icon"></span>
                 </div>
@@ -108,7 +102,7 @@
                         <button class="cancel" id="cancel">отмена</button>
                     </div>
                 </div>   
-            </article>
+            </section>
         </main>
     </div>
     <script src="src/index.js" type="module"></script>

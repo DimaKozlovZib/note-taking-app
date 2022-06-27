@@ -245,7 +245,7 @@ button h1, button h2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 100%;
+  height: calc(100vh - 68px);
 }
 
 .main .load-window, .main .notes {
@@ -255,6 +255,8 @@ button h1, button h2 {
 }
 
 .main .notes {
+  padding-bottom: 40px;
+  overflow-y: auto;
   width: 100vw;
   margin-top: 10px;
   margin-left: 25px;
@@ -262,6 +264,12 @@ button h1, button h2 {
   float: left;
   background-color: transparent;
   position: relative;
+  scrollbar-width: none;
+}
+
+.main .notes::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .main .notes .note {
@@ -340,13 +348,6 @@ button h1, button h2 {
 
 .main .notes-box {
   margin-top: 10px;
-  overflow: auto;
-  scrollbar-width: none;
-}
-
-.main .notes-box::-webkit-scrollbar {
-  width: 0;
-  height: 0;
 }
 
 .main .aside {

@@ -193,13 +193,15 @@ button{
 
 .main {
     display: flex;
-    height: 100%;
+    height: calc(100vh - 68px);
     .load-window , .notes{
         min-height: 100%;
         
         box-sizing: border-box;
     }
     .notes {
+        padding-bottom: 40px;
+        overflow-y: auto;
         width: 100vw;
         margin-top: 10px;
         margin-left: 25px;
@@ -207,6 +209,11 @@ button{
         float: left;
         background-color: transparent;
         position: relative;
+        scrollbar-width: none;
+        &::-webkit-scrollbar{
+            width: 0;
+            height: 0;
+        }
         .note {
             line-height: 20px;
             padding: 12px 10px;
@@ -262,12 +269,6 @@ button{
         }
         &-box{
             margin-top: 10px;
-            overflow: auto;
-            scrollbar-width: none;
-            &::-webkit-scrollbar{
-                width: 0;
-                height: 0;
-            }
         }
     }
     .aside {

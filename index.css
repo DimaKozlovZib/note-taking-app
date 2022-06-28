@@ -92,7 +92,7 @@ button .img-box {
 
 button:hover img.decrease-icon, button:active img.decrease-icon {
   -webkit-animation: decrease linear 0.3s;
-          animation: decrease linear 0.3s;
+  animation: decrease linear 0.3s;
 }
 
 button h1, button h2 {
@@ -102,9 +102,9 @@ button h1, button h2 {
 .menu {
   margin-right: 5px;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   position: relative;
   height: auto;
   -webkit-box-align: center;
@@ -212,7 +212,7 @@ button h1, button h2 {
   width: 45px;
   height: 45px;
   -webkit-animation: rotateZ 0.7s linear infinite;
-          animation: rotateZ 0.7s linear infinite;
+  animation: rotateZ 0.7s linear infinite;
 }
 
 @-webkit-keyframes rotateZ {
@@ -481,6 +481,12 @@ button h1, button h2 {
 .the-star.active .star2 {
   display: block;
   margin-top: 3px;
+}
+
+.date-title {
+  font-size: 16px;
+  margin: 25px 0px 1px 15px;
+  color: #000;
 }
 
 .form-for-add {

@@ -75,7 +75,8 @@ button{
     }
     &:hover, &:active{
         img.decrease-icon{
-            animation: decrease linear 0.3s;
+            -webkit-animation: decrease linear 0.3s;
+                    animation: decrease linear 0.3s;
         }
     }
     h1,h2{
@@ -87,7 +88,10 @@ button{
 
 .menu {
     margin-right: 5px;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
     position: relative;
     height: auto;
     align-items: center;
@@ -173,7 +177,16 @@ button{
         border-radius: 50%;
         width: 45px;
         height: 45px;
-        animation: rotateZ 0.7s linear infinite;
+        -webkit-animation: rotateZ 0.7s linear infinite;
+                animation: rotateZ 0.7s linear infinite;
+        @-webkit-keyframes rotateZ {
+            0%{
+                transform: rotateZ(0deg);
+            }
+            100%{
+                transform: rotateZ(360deg);
+            }
+        }
         @keyframes rotateZ {
             0%{
                 transform: rotateZ(0deg);
@@ -393,7 +406,12 @@ button{
 }
 
 
-
+.date-title{
+    font-size: 16px;
+    margin: 25px 0px 1px 15px;
+    color: #000;
+    
+}
 
 //...............form on page for add notes.....................................................................................
 
@@ -490,6 +508,16 @@ button{
 
 .button-navigation{
     margin-top: 20px;
+}
+@-webkit-keyframes decrease{
+    50%{
+        width: 16px;
+        height: 16px;
+    }
+    0%{
+        width: 28px;
+        height: 28px; 
+    }
 }
 @keyframes decrease{
     50%{

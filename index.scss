@@ -148,12 +148,36 @@ button{
     padding: 10px 0px;
     background-color: $blackColor;
     color: #fff;
-    &__contaier{
+    &__container{
         display: flex;
+        gap: 20px;
     }
     &__logo{
         font-size: 12px;
     }
+    &__form-searh{
+        height: 100%;
+        margin: auto;
+        display: flex;
+        background: #464646;
+        border-radius: 5px;
+        max-width: 450px;
+        padding: 0px 10px 0px 15px;
+        color: #fff;
+        img{
+            width: 20px;
+        }
+    }
+    .form-wrapper{
+        flex: 1 1 auto;
+        align-self: stretch;
+        input{
+            color: inherit;
+            border: none;
+            flex: 1 1 auto;
+            background: transparent;
+        }
+    }  
 }
 
 
@@ -470,7 +494,7 @@ button{
         color: #242424
     } 
 }
-.form-wrapper{
+main .form-wrapper{
     padding: 13px 15px;
     background-color: $color1;
     border-radius: 10px;

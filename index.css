@@ -174,14 +174,50 @@ button h1, button h2 {
   color: #fff;
 }
 
-.header__contaier {
+.header__container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 20px;
 }
 
 .header__logo {
   font-size: 12px;
+}
+
+.header__form-searh {
+  height: 100%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #464646;
+  border-radius: 5px;
+  max-width: 450px;
+  padding: 0px 10px 0px 15px;
+  color: #fff;
+}
+
+.header__form-searh img {
+  width: 20px;
+}
+
+.header .form-wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+}
+
+.header .form-wrapper input {
+  color: inherit;
+  border: none;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  background: transparent;
 }
 
 /*....load window.......*/
@@ -563,7 +599,7 @@ button h1, button h2 {
   color: #242424;
 }
 
-.form-wrapper {
+main .form-wrapper {
   padding: 13px 15px;
   background-color: #DFDFDF;
   border-radius: 10px;

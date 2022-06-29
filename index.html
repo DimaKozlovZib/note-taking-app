@@ -21,6 +21,15 @@
                 <a href="#" class="header__logo">
                     <h1 class="logo-text">Notes</h1>
                 </a>
+                <div class="form-wrapper">
+                    <form action="" class="header__form-searh">
+                        <input type="text" placeholder="поиск">
+                        <button id="search-btn">
+                            <img src="image/search_white.svg" alt="поиск">
+                        </button>
+                    </form>
+                </div>
+                
             </div>
         </header>
         <main class="main">
@@ -28,20 +37,19 @@
                 <div class="box-button-navigation">
                     <button class="search button-navigation">
                         <div class="img-box">
-                            <img src="image/calendar.png" alt="" class="search-image decrease-icon">
+                            <img src="image/search.svg" alt="" class="search-image decrease-icon">
                         </div>
                         <h1 class="logo-text">Search</h1>
                     </button>
                     <button class="calendar button-navigation">
                         <div class="img-box">
-                            <img src="image/search.png" alt="" class="calendar-image decrease-icon">
+                            <img src="image/calendar.png" alt="" class="calendar-image decrease-icon">
                         </div>
                         <h1 class="logo-text">Calendar</h1>
                     </button>
                 </div>
             </aside>
-
-            <section class="notes to-close">
+            <section class="notes to-close" >
                 <div class="load-window" id="load-window">
                     <span class="load-icon"></span>
                 </div>
@@ -88,19 +96,6 @@
                             </div>-->
                         </div>
                     </section>
-                    <div class="load-and-noNotes">
-                        <div class="noNotes-wrapper">
-                            <p>У вас нету записей.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="window-confirm-deletion is-invisible">
-                    <h3 class="window-confirm-deletion-title">подтверждение :</h3>
-                    <p>Потвердите что вы хотите удалить запись.</p>
-                    <div class="buttons">
-                        <button class="confirm" id="confirm-button">удалить</button>
-                        <button class="cancel" id="cancel">отмена</button>
-                    </div>
                 </div>   
             </section>
         </main>

@@ -1,11 +1,12 @@
 "use script";
 //localStorage.removeItem("listNotes")
 let baseData;
-let date = new Date()
+
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
 
 let TimeNow = function () {
+    let date = new Date();
     let Day = date.getDate();
     let Month = date.getMonth();
     let year = date.getFullYear();
@@ -36,7 +37,9 @@ function connectBD() {
             baseData.close();
             alert("База данных устарела, пожалуста, перезагрузите страницу.")
         };
-        build_HTML_elements(openRequest.result);
+        console.log(openRequest.result)
+        build_HTML_elements();
+
     };
     openRequest.onupgradeneeded = (e) => {
         let db = openRequest.result;
@@ -85,9 +88,10 @@ let addNotes = document.getElementById("add").addEventListener("click", () => {
     };
 });
 
-function build_HTML_elements(baseData) {
-    let transaction = baseData.transaction("NotesFilterDate") //получаем доступ
-        .objectStore("NotesFilterDate");
+function build_HTML_elements() {
+    console.log(baseData)
+    let transaction = baseData.transaction("NotesFilterDate").objectStore("NotesFilterDate");//получаем доступ
+    console.log(transaction)
     let request = transaction.openCursor();
     //let item = objectStoreRead.get("Text");
     let noteBox = document.querySelector("#note-box");
@@ -106,7 +110,7 @@ function build_HTML_elements(baseData) {
                 console.log(date)
                 noteBox.insertAdjacentHTML("afterbegin",
                     `<div data-date="${object.Date}">
-                        <h2>${object.Date}</h2>
+                        <h2 class="date-title">${object.Date}</h2>
                         <div class="notes-container"></div>
                     </div>`);
                 containerWithNotes = document.querySelector(`[data-date*="${object.Date}"] > .notes-container`);
@@ -128,7 +132,6 @@ function build_HTML_elements(baseData) {
     }
     document.querySelector("#load-window").classList.add("close");
 }
-
 
 
 
@@ -174,10 +177,10 @@ function taggetButtonsListener() {
 document.querySelector("#addForm__icon-important").onclick = (item) => {
     activateHtmlElem(document.querySelector("#addForm__icon-important"))
 };
-document.querySelector("#tab-button-add").addEventListener("click", () => {
+document.querySelector("#tab-button-add").onclick = () => {
     let Form = document.querySelector("#add-form");
     activateHtmlElem(Form);
-})
+}
 document.querySelector("#delete-button").onclick = () => {
     let store = baseData.transaction("NotesFilterDate", "readwrite")
         .objectStore("NotesFilterDate"); //получаем доступ
@@ -193,3 +196,32 @@ document.querySelector("#delete-button").onclick = () => {
         }
     })
 }
+
+document.querySelector('#search-btn').onclick = function (event) {
+    event.preventDefault();
+    let searchText = document.querySelector("#search-input").value;
+    if (!searchText) return;
+    document.querySelector("#search-form").reset();
+
+    let promise = new Promise(function (resolve, reject) {
+        let store = baseData.transaction("NotesFilterDate", "readwrite")
+            .objectStore("NotesFilterDate"); //получаем доступ
+        let request = store.openCursor();
+        let resultArray = [];
+        request.onsuccess = () => {
+            let cursor = request.result;
+            if (cursor) {
+                if (cursor.value.Text.indexOf(searchText) !== -1) {
+                    resultArray.push(cursor.key);
+                }
+                cursor.continue();
+            } else {
+                if (!resultArray) {
+                    reject(`ничего не найдено по запросу: ${searchText}`)
+                }
+                console.log(resultArray)
+                resolve(resultArray);
+            }
+        }
+    })//promuse
+};

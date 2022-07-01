@@ -52,6 +52,33 @@ function connectBD() {
 };//db
 connectBD();
 
+function createHtmlNotesElments(date, object, key, containerWithNotes) {
+    let Text = object.Text;
+    let important = object.isImportant ? "active" : "";
+    let noteBox = document.querySelector("#note-box");
+
+    if (!(date == object.Date)) {
+        console.log(date)
+        noteBox.insertAdjacentHTML("afterbegin",
+            `<div data-date="${object.Date}">
+                <h2 class="date-title">${object.Date}</h2>
+                <div class="notes-container"></div>
+            </div>`);
+        containerWithNotes = document.querySelector(`[data-date*="${object.Date}"] > .notes-container`);
+        //контейнер в котором хранятся записи с одинаковой датой 
+    }
+    containerWithNotes.insertAdjacentHTML("beforeend",
+        `<div class="note" data-id="${key}">
+            <button class="tagget"></button>
+            <p class="note-text">${Text}</p>
+            <span class="star the-star ${important}" aria-label="Пометка записи как важной.">
+                <i class="fa-regular fa-star star1"></i>
+                <i class="fa-solid fa-star star2" ></i>
+            </span>
+        </div>`);//вставляем в родителя
+    return [object.Date, containerWithNotes];
+}
+
 
 document.getElementById("add").onclick = (event) => { return event.preventDefault(); };
 
@@ -94,37 +121,17 @@ function build_HTML_elements() {
     console.log(transaction)
     let request = transaction.openCursor();
     //let item = objectStoreRead.get("Text");
-    let noteBox = document.querySelector("#note-box");
-    let date, containerWithNotes;
+    let date, dateAndNotesBox, containerWithNotes;
     request.onsuccess = () => {
         let cursor = request.result;
-        let object, key, Text, important;
+        let object, key;
         if (cursor) {
             object = cursor.value;
             key = cursor.key;
-            Text = object.Text;
-            important = object.isImportant ? "active" : "";
+
+            dateAndNotesBox = createHtmlNotesElments(date, object, key, containerWithNotes);
+            [date, containerWithNotes] = dateAndNotesBox;
             console.log(date)
-            if (!(date == object.Date)) {
-                date = object.Date;
-                console.log(date)
-                noteBox.insertAdjacentHTML("afterbegin",
-                    `<div data-date="${object.Date}">
-                        <h2 class="date-title">${object.Date}</h2>
-                        <div class="notes-container"></div>
-                    </div>`);
-                containerWithNotes = document.querySelector(`[data-date*="${object.Date}"] > .notes-container`);
-                //контейнер в котором хранятся записи с одинаковой датой 
-            }
-            containerWithNotes.insertAdjacentHTML("beforeend",
-                `<div class="note" data-id="${key}">
-                    <button class="tagget"></button>
-                    <p class="note-text">${Text}</p>
-                    <span class="star the-star ${important}" aria-label="Пометка записи как важной.">
-                        <i class="fa-regular fa-star star1"></i>
-                        <i class="fa-solid fa-star star2" ></i>
-                    </span>
-                </div>`);//вставляем в родителя
             cursor.continue();
         } else {
             taggetButtonsListener();

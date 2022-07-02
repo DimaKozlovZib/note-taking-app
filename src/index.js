@@ -140,7 +140,17 @@ function build_HTML_elements() {
     document.querySelector("#load-window").classList.add("close");
 }
 
-
+function sectionManagement(activeSection, closeLoadWindow = false) {
+    if (closeLoadWindow && !document.querySelector("#load-window").classList.contains("close")) {
+        document.querySelector("#load-window").classList.add("close");
+        document.querySelectorAll(".notes-contant-section").forEach(item => {
+            item.classList.remove("active");
+        })
+        document.querySelector(`#${activeSection}`).classList.add("active");
+    } else {
+        document.querySelector("#load-window").classList.remove("close");
+    }
+}
 
 
 function taggetButtonsListener() {

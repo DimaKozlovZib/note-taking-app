@@ -52,10 +52,10 @@ function connectBD() {
 };//db
 connectBD();
 
-function createHtmlNotesElments(date, object, key, containerWithNotes) {
+function createHtmlNotesElments(date, object, key, containerWithNotes, notesBox) {
     let Text = object.Text;
     let important = object.isImportant ? "active" : "";
-    let noteBox = document.querySelector("#note-box");
+    let noteBox = document.querySelector(`#${notesBox}`);
 
     if (!(date == object.Date)) {
         console.log(date)
@@ -129,7 +129,7 @@ function build_HTML_elements() {
             object = cursor.value;
             key = cursor.key;
 
-            dateAndNotesBox = createHtmlNotesElments(date, object, key, containerWithNotes);
+            dateAndNotesBox = createHtmlNotesElments(date, object, key, containerWithNotes, "note-box");
             [date, containerWithNotes] = dateAndNotesBox;
             console.log(date)
             cursor.continue();

@@ -22,8 +22,8 @@
                     <h1 class="logo-text">Notes</h1>
                 </a>
                 <div class="form-wrapper">
-                    <form action="" class="header__form-searh">
-                        <input type="text" placeholder="поиск">
+                    <form action="" class="header__form-searh" id="search-form">
+                        <input type="text" placeholder="поиск" id="search-input">
                         <button id="search-btn">
                             <img src="image/search_white.svg" alt="поиск">
                         </button>
@@ -54,7 +54,7 @@
                 <div class="load-window" id="load-window">
                     <span class="load-icon"></span>
                 </div>
-                <div class="notes-container" id="notes-container">
+                <div class="notes-mainWindow notes-contant-section" id="notes-container">
                     <!--форма добавления записи-->
                     <div class="form-wrapper">
                         <button class="tab-button" id="tab-button-add">
@@ -77,13 +77,12 @@
                         </form>
                     </div>
                     <!--контейнер с записями пользователя-->
-                    <section class="box-notes">
+                    <div class="box-notes">
                         <div class="notes-title">
                             <h3 class="notes-title-text" id="notes-title-text">ваши записи :</h3>
                             <button class="delete-button" id="delete-button">
                                 <i class="fa-regular fa-trash-can"></i>
                                 <h3>удалить</h3>
-                                
                             </button>
                         </div>
                         <div class="notes-box" id="note-box">
@@ -96,8 +95,20 @@
                                 </span>
                             </div>-->
                         </div>
-                    </section>
-                </div>   
+                    </div>
+                </div>
+                <div class="notes-searchWindow notes-contant-section">
+                    <div class="notes-title">
+                        <h3 class="notes-title-text" id="notes-title-text"></h3>
+                        <button class="delete-button" id="delete-button">
+                            <i class="fa-regular fa-trash-can"></i>
+                            <h3>удалить</h3>
+                        </button>
+                    </div>
+                    <div class="notes-box" id="note-search-box">
+
+                    </div>
+                </div>
             </section>
         </main>
     </div>

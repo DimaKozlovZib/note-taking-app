@@ -64,7 +64,7 @@ function createHtmlNotesElments(date, object, key, containerWithNotes, notesBox)
                 <h2 class="date-title">${object.Date}</h2>
                 <div class="notes-container"></div>
             </div>`);
-        containerWithNotes = document.querySelector(`[data-date*="${object.Date}"] > .notes-container`);
+        containerWithNotes = document.querySelector(`#${notesBox} [data-date*="${object.Date}"] > .notes-container`);
         //контейнер в котором хранятся записи с одинаковой датой 
     }
     containerWithNotes.insertAdjacentHTML("beforeend",
@@ -141,12 +141,15 @@ function build_HTML_elements() {
 }
 
 function sectionManagement(activeSection, closeLoadWindow = false) {
-    if (closeLoadWindow && !document.querySelector("#load-window").classList.contains("close")) {
-        document.querySelector("#load-window").classList.add("close");
+    if (closeLoadWindow) {
+        if (!document.querySelector("#load-window").classList.contains("close")) {
+            document.querySelector("#load-window").classList.add("close");
+        }
         document.querySelectorAll(".notes-contant-section").forEach(item => {
             item.classList.remove("active");
         })
         document.querySelector(`#${activeSection}`).classList.add("active");
+
     } else {
         document.querySelector("#load-window").classList.remove("close");
     }
@@ -217,11 +220,12 @@ document.querySelector("#delete-button").onclick = () => {
 document.querySelector('#search-btn').onclick = function (event) {
     event.preventDefault();
     let searchText = document.querySelector("#search-input").value;
-    if (!searchText) return;
+    if (!searchText || !baseData) return;
     document.querySelector("#search-form").reset();
+    sectionManagement("notes-search-container");
 
     let promise = new Promise(function (resolve, reject) {
-        let store = baseData.transaction("NotesFilterDate", "readwrite")
+        let store = baseData.transaction("NotesFilterDate")
             .objectStore("NotesFilterDate"); //получаем доступ
         let request = store.openCursor();
         let resultArray = [];
@@ -229,16 +233,34 @@ document.querySelector('#search-btn').onclick = function (event) {
             let cursor = request.result;
             if (cursor) {
                 if (cursor.value.Text.indexOf(searchText) !== -1) {
-                    resultArray.push(cursor.key);
+                    resultArray.push([cursor.key, cursor.value]);
                 }
                 cursor.continue();
             } else {
-                if (!resultArray) {
+                if (resultArray.length === 0) {
                     reject(`ничего не найдено по запросу: ${searchText}`)
                 }
-                console.log(resultArray)
+                console.log(resultArray === [])
                 resolve(resultArray);
             }
         }
     })//promuse
+    promise.then(
+        (succesResult) => {
+            document.querySelector("#search-title-text").innerHTML = `Результаты по запросу: ${searchText}`;
+            let date, dateAndNotesBox, containerWithNotes;
+            for (let elem of succesResult) {
+                let object, key;
+                [key, object] = elem;
+                console.log(object)
+                dateAndNotesBox = createHtmlNotesElments(date, object, key, containerWithNotes, "note-search-box");
+                [date, containerWithNotes] = dateAndNotesBox;
+            }
+        },
+        (error) => {
+            document.querySelector("#search-title-text").innerHTML = error;
+            document.querySelector("#search-title-text").classList.add("noResult")
+        }
+    );
+    sectionManagement("notes-search-container", true);
 };

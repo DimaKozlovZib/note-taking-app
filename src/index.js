@@ -206,14 +206,22 @@ document.querySelector("#delete-button").onclick = () => {
         .objectStore("NotesFilterDate"); //получаем доступ
     console.log(document.querySelectorAll(".tagget.active"))
     document.querySelectorAll(".tagget.active").forEach((item) => {
-        let parentElem = item.parentElement;
-        let i = parentElem.getAttribute("data-id");
-        let request = store.delete(Number(i));
+        let elemId = item.parentElement.getAttribute("data-id");
+        let request = store.delete(Number(elemId));
+        document.querySelectorAll(`[data-id="${elemId}"]`).forEach(item => {
+            request.onsuccess = () => {
+                console.log(item.parentElement.parentElement)
+                if (!item.parentElement.childNodes.length - 1) {
+                    item.parentElement.parentElement.remove()
+                } else {
+                    item.remove();
+                }
+                document.querySelector("#delete-button").classList.remove("active");
+            }
+        })
 
-        request.onsuccess = () => {
-            parentElem.remove();
-            document.querySelector("#delete-button").classList.remove("active");
-        }
+
+
     })
 }
 

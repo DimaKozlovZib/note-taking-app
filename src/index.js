@@ -67,7 +67,7 @@ function createHtmlNotesElments(date, object, key, containerWithNotes, notesBox)
         containerWithNotes = document.querySelector(`#${notesBox} [data-date*="${object.Date}"] > .notes-container`);
         //контейнер в котором хранятся записи с одинаковой датой 
     }
-    containerWithNotes.insertAdjacentHTML("beforeend",
+    containerWithNotes.insertAdjacentHTML("afterbegin",
         `<div class="note" data-id="${key}">
             <button class="tagget"></button>
             <p class="note-text">${Text}</p>
@@ -100,17 +100,13 @@ let addNotes = document.getElementById("add").addEventListener("click", () => {
     }];
     let notesAdd = transaction.add(addObject[0]);
     notesAdd.onsuccess = (event) => {
-        let boxWithNotes = document.querySelector("#note-box");
-
-        boxWithNotes.insertAdjacentHTML('afterbegin',
-            `<div class="note" data-id="${event.target.result}">
-            <button class="tagget"></button>
-            <p class="note-text">${noteString}</p>
-            <span class="star  the-star" aria-label="Пометка задачи как важной.">
-                <i class="fa-regular fa-star star1"></i>
-                <i class="fa-solid fa-star star2" ></i>
-            </span>
-        </div>`);
+        let lastNotesDate = document.querySelector("#note-box").firstChild.getAttribute("data-date");
+        createHtmlNotesElments(
+            lastNotesDate,
+            addObject[0], event.target.result,
+            document.querySelector(`#note-box .notes-container`),
+            "note-box"
+        );
         taggetButtonsListener();
     };
 });

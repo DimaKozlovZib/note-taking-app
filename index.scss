@@ -3,6 +3,11 @@
     margin: 0;
     outline: none;
     text-decoration: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+        width: 0;
+        height: 0;
+    }
 }
 //font-family: 'Inter', sans-serif;
 //font-family: 'Roboto', sans-serif;
@@ -22,7 +27,7 @@ a{
     padding: 0px 10px;
 }
 .wrapper {
-    min-height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -127,7 +132,7 @@ h6 {
         font-size: 20px;
     }
     &__form-searh{
-        height: 100%;
+        height: 26px;
         margin: auto;
         display: flex;
         background: #464646;
@@ -204,30 +209,34 @@ h6 {
 
 //.............main.....................................................................................
 
-
+.notes-contant-section{
+    padding-bottom: 25px;
+    box-sizing: border-box;
+    display: none;
+    height: 100%;
+    overflow: auto;
+    &.active{
+        display: block; 
+    }
+}
+.notes-box{
+}
 .main {
+    overflow: hidden;
+    flex: 1 1 auto;
     display: flex;
-    height: calc(100vh - 44px);
     .load-window , .notes{
         min-height: 100%;
         
         box-sizing: border-box;
     }
     .notes {
-        padding-bottom: 40px;
-        overflow-y: auto;
-        width: 100vw;
+        flex: 1 1 auto;
         margin-top: 10px;
         margin-left: 25px;
         padding-right: 25px;
-        float: left;
         background-color: transparent;
-        position: relative;
-        scrollbar-width: none;
-        &::-webkit-scrollbar{
-            width: 0;
-            height: 0;
-        }
+
         .note {
             line-height: 20px;
             padding: 12px 10px;

@@ -99,8 +99,16 @@ let addNotes = document.getElementById("add").addEventListener("click", () => {
         isImportant: notesIsImportant
     }];
     let notesAdd = transaction.add(addObject[0]);
+    let lastNotesDate;
     notesAdd.onsuccess = (event) => {
-        let lastNotesDate = document.querySelectorAll("#note-box")[0].firstChild.getAttribute("data-date");
+        try {
+            lastNotesDate = document.querySelector("#note-box").firstChild.getAttribute("data-date");
+        } catch (error) {
+            lastNotesDate = '';
+        }
+
+
+        console.log(document.querySelectorAll("#note-box")[0].firstChild)
         createHtmlNotesElments(
             lastNotesDate,
             addObject[0], event.target.result,

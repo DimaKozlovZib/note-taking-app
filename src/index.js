@@ -106,9 +106,6 @@ let addNotes = document.getElementById("add").addEventListener("click", () => {
         } catch (error) {
             lastNotesDate = '';
         }
-
-
-        console.log(document.querySelectorAll("#note-box")[0].firstChild)
         createHtmlNotesElments(
             lastNotesDate,
             addObject[0], event.target.result,
@@ -235,7 +232,11 @@ document.querySelector('#search-btn').onclick = function (event) {
     if (!searchText || !baseData) return;
     document.querySelector("#search-form").reset();
     sectionManagement("notes-search-container");
-
+    if (document.querySelector("#note-search-box").childNodes) {
+        document.querySelector("#note-search-box").childNodes.forEach(item => {
+            item.remove();
+        })
+    }
     let promise = new Promise(function (resolve, reject) {
         let store = baseData.transaction("NotesFilterDate")
             .objectStore("NotesFilterDate"); //получаем доступ

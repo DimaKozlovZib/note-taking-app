@@ -277,3 +277,42 @@ document.querySelector('#search-btn').onclick = function (event) {
     );
     sectionManagement("notes-search-container", true);
 };
+
+
+document.querySelector(".important-btn").onclick = function seeOnlyimportantNotes() {
+    sectionManagement("important-container");
+    if (!baseData) { return }
+    let promise = new Promise(function (resolve, reject) {
+        let store = baseData.transaction("NotesFilterDate")
+            .objectStore("NotesFilterDate"); //получаем доступ
+        let request = store.openCursor();
+        let resultArray = [];
+        request.onsuccess = () => {
+            let cursor = request.result;
+            if (cursor) {
+                if (cursor.value.isImportant) {
+                    resultArray.push([cursor.key, cursor.value]);
+                }
+                cursor.continue();
+            } else {
+                resolve(resultArray);
+            }
+        }
+    })//promuse
+    promise.then(
+        (succesResult) => {
+            let date, dateAndNotesBox, containerWithNotes;
+            for (let elem of succesResult) {
+                let object, key;
+                [key, object] = elem;
+                console.log(object)
+                dateAndNotesBox = createHtmlNotesElments(date, object, key, containerWithNotes, "note-important-box");
+                [date, containerWithNotes] = dateAndNotesBox;
+            }
+        },
+        (error) => {
+            console.log(error)
+        }
+    );
+    sectionManagement("important-container", true);
+};

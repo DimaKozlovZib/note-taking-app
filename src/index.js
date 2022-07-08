@@ -280,8 +280,14 @@ document.querySelector('#search-btn').onclick = function (event) {
 
 
 document.querySelector(".important-btn").onclick = function seeOnlyimportantNotes() {
+    if (!baseData) { return };
     sectionManagement("important-container");
-    if (!baseData) { return }
+    if (document.querySelector("#note-important-box").childNodes) {
+        console.log(document.querySelector("#note-important-box").childNodes)
+        document.querySelectorAll("#note-important-box > div").forEach(item => {
+            item.remove()
+        })
+    }
     let promise = new Promise(function (resolve, reject) {
         let store = baseData.transaction("NotesFilterDate")
             .objectStore("NotesFilterDate"); //получаем доступ

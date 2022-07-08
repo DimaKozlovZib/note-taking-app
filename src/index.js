@@ -301,12 +301,17 @@ document.querySelector(".important-btn").onclick = function seeOnlyimportantNote
                 }
                 cursor.continue();
             } else {
-                resolve(resultArray);
+                if (!resultArray.length) {
+                    reject("У вас нету важных записей")
+                } else {
+                    resolve(resultArray);
+                }
             }
         }
     })//promuse
     promise.then(
         (succesResult) => {
+            document.querySelector("#notes-important-title").innerHTML = "ваши важные записи :";
             let date, dateAndNotesBox, containerWithNotes;
             for (let elem of succesResult) {
                 let object, key;
@@ -317,7 +322,8 @@ document.querySelector(".important-btn").onclick = function seeOnlyimportantNote
             }
         },
         (error) => {
-            console.log(error)
+            console.log(error);
+            document.querySelector("#notes-important-title").innerHTML = error;
         }
     );
     sectionManagement("important-container", true);

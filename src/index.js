@@ -338,3 +338,7 @@ document.querySelector(".important-btn").onclick = function seeOnlyimportantNote
     sectionManagement("important-container", true);
 };
 
+document.querySelector("#home-btn").onclick = () => {
+    sectionManagement("notes-container");
+    sectionManagement("notes-container", true);
+}

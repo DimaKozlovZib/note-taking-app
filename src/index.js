@@ -261,6 +261,7 @@ document.querySelector('#search-btn').onclick = function (event) {
     promise.then(
         (succesResult) => {
             document.querySelector("#search-title-text").innerHTML = `Результаты по запросу: ${searchText}`;
+            document.querySelector("#search-title-text").classList = "notes-title-text";
             let date, dateAndNotesBox, containerWithNotes;
             for (let elem of succesResult) {
                 let object, key;
@@ -277,7 +278,15 @@ document.querySelector('#search-btn').onclick = function (event) {
     );
     sectionManagement("notes-search-container", true);
 };
-
+document.querySelector("#search-btn-navigation").onclick = () => {
+    sectionManagement("notes-search-container");
+    let searchTitle = document.querySelector("#search-title-text");
+    if (!searchTitle.innerHTML) {
+        searchTitle.innerHTML = "Начните поиск прямо сейчас";
+        searchTitle.classList.add("noResult");
+    };
+    sectionManagement("notes-search-container", true);
+}
 
 document.querySelector(".important-btn").onclick = function seeOnlyimportantNotes() {
     if (!baseData) { return };
@@ -328,3 +337,4 @@ document.querySelector(".important-btn").onclick = function seeOnlyimportantNote
     );
     sectionManagement("important-container", true);
 };
+

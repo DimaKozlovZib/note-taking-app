@@ -73,21 +73,21 @@ h6 {
   -ms-user-select: none;
   user-select: none;
   position: relative;
-  height: auto;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  height: 18px;
   width: 30px;
   display: none;
   cursor: pointer;
 }
 
 .menu span, .menu::before, .menu::after {
-  position: fixed;
+  right: 0px;
+  left: 0;
+  bottom: 0px;
+  position: absolute;
   height: 2px;
   width: 100%;
   margin: 0px auto;
-  background-color: #1f1a1a;
+  background-color: #fff;
   -webkit-transition: -webkit-transform 0.15s linear;
   transition: -webkit-transform 0.15s linear;
   transition: transform 0.15s linear;
@@ -99,38 +99,42 @@ h6 {
 }
 
 .menu::before {
-  top: 7px;
+  top: 0px;
 }
 
 .menu::after {
-  bottom: 3px;
+  bottom: 0px;
 }
 
 .menu span {
-  top: 14px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto 0px;
 }
 
-.menu.is-active span {
+.menu.active span {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
-.menu.is-active::before {
+.menu.active::before {
   display: none;
 }
 
-.menu.is-active::after {
-  bottom: 0;
-  top: 14px;
+.menu.active::after {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
 
-@media (max-width: 720px) {
+.menu.active::after, .menu.active span {
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+
+@media (max-width: 700px) {
   .menu {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display: block;
   }
 }
 
@@ -145,6 +149,9 @@ h6 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 20px;
 }
 
@@ -203,7 +210,6 @@ h6 {
   height: 100%;
   top: 0;
   bottom: 0;
-  margin-top: -10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -256,11 +262,12 @@ h6 {
 
 .notes-contant-section {
   padding-bottom: 25px;
+  box-sizing: border-box;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   display: none;
   height: 100%;
   overflow: auto;
+  padding: 10px 25px;
 }
 
 .notes-contant-section.active {
@@ -287,9 +294,7 @@ h6 {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  margin-top: 10px;
-  margin-left: 25px;
-  padding-right: 25px;
+  position: relative;
   background-color: transparent;
 }
 
@@ -379,25 +384,30 @@ h6 {
 
 @media (max-width: 810px) {
   .main .aside {
-    padding: 30px 20px 20px 20px;
+    padding: 30px 30px 20px 15px;
   }
-  .main .aside .logo-text {
+}
+
+@media (max-width: 700px) {
+  .main .aside {
+    position: absolute;
+    z-index: 500;
+    height: 100%;
+    width: 100%;
     display: none;
   }
-}
-
-@media (max-width: 550px) {
-  .main .aside {
-    width: auto;
-    padding: 40px 15px 15px 15px;
+  .main .aside.active {
+    display: block;
   }
-  .main .aside .img-box {
-    margin: 0;
+  .main .button-navigation {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
-}
-
-.main .aside.is-open {
-  display: block;
+  .main {
+    position: relaitve;
+  }
 }
 
 .box-notes {

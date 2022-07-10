@@ -342,3 +342,16 @@ document.querySelector("#home-btn").onclick = () => {
     sectionManagement("notes-container");
     sectionManagement("notes-container", true);
 }
+
+document.querySelector("#burger-menu").onclick = () => {
+    const menuButton = document.querySelector("#burger-menu").classList;
+    const menuList = document.querySelector("#Site-navigation").classList;
+    if (menuList.contains("active")) {
+        menuButton.remove("active");
+        menuList.remove("active");
+    } else {
+        menuButton.add("active");
+        menuList.add("active");
+    }
+
+}

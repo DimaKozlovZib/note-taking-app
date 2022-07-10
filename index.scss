@@ -69,8 +69,7 @@ h6 {
         -ms-user-select: none;
             user-select: none;
     position: relative;
-    height: auto;
-    align-items: center;
+    height: 18px;
     width: 30px;
     display: none;
     cursor: pointer;
@@ -78,11 +77,14 @@ h6 {
     span,
     &::before,
     &::after {
-        position: fixed;
+        right: 0px;
+        left: 0;
+        bottom: 0px;
+        position: absolute;
         height: 2px;
         width: 100%;
         margin: 0px auto;
-        background-color: #1f1a1a;
+        background-color: #fff;
         transition: transform 0.15s linear;
     }
     &::before,
@@ -90,16 +92,18 @@ h6 {
         content: "";
     }
     &::before {
-        top: 7px;
+        top: 0px;
     }
     &::after {
-        bottom: 3px;
+        bottom: 0px;
     }
     span {
-        top: 14px;
+        top: 0px;
+        bottom: 0px;
+        margin: auto 0px;
     }
 }
-.menu.is-active {
+.menu.active {
     span {
         transform: rotate(45deg);
     }
@@ -107,14 +111,18 @@ h6 {
         display: none;
     }
     &::after {
-        bottom: 0;
-        top: 14px;
+
         transform: rotate(-45deg);
     }
+    &::after, span{
+        bottom: 0;
+        top: 0;
+        margin: auto;
+    }
 }
-@media (max-width: 720px) {
+@media (max-width: 700px) {
     .menu {
-        display: flex;
+        display: block;
     }
 }
 
@@ -126,6 +134,7 @@ h6 {
     color: #fff;
     &__container{
         display: flex;
+        align-items: center;
         gap: 20px;
     }
     &__logo{
@@ -170,7 +179,6 @@ h6 {
     height: 100%;
     top: 0;
     bottom: 0;
-    margin-top: -10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -212,9 +220,11 @@ h6 {
 .notes-contant-section{
     padding-bottom: 25px;
     box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     display: none;
     height: 100%;
     overflow: auto;
+    padding: 10px 25px;
     &.active{
         display: block; 
     }
@@ -232,9 +242,7 @@ h6 {
     }
     .notes {
         flex: 1 1 auto;
-        margin-top: 10px;
-        margin-left: 25px;
-        padding-right: 25px;
+        position: relative;
         background-color: transparent;
 
         .note {
@@ -301,23 +309,27 @@ h6 {
     }
     @media (max-width: 810px) {
         .aside {
-            padding: 30px 20px 20px 20px;
-            .logo-text{
-                display: none;
-            }
+            padding: 30px 30px 20px 15px;
         }
     }
-    @media (max-width: 550px) {
-        .aside {
-            width: auto;
-            padding: 40px 15px 15px 15px;
-            .img-box{
-                margin: 0;
+    @media (max-width: 700px) {
+        .aside{
+            position: absolute;
+            z-index: 500;
+            height: 100%;
+            width: 100%;
+            display: none;
+            &.active{
+                display: block;
             }
         }
-    }
-    .aside.is-open {
-        display: block;
+        .button-navigation{
+            width: 100%;
+            justify-content: center;
+        }
+        &{
+            position: relaitve;
+        }
     }
 }//
 .box-notes{

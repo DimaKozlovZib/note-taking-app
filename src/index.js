@@ -343,7 +343,9 @@ document.querySelector("#home-btn").onclick = () => {
     sectionManagement("notes-container", true);
 }
 
-document.querySelector("#burger-menu").onclick = () => {
+document.querySelector("#burger-menu").onclick = () => menuOnMobile();
+
+function menuOnMobile() {
     const menuButton = document.querySelector("#burger-menu").classList;
     const menuList = document.querySelector("#Site-navigation").classList;
     if (menuList.contains("active")) {
@@ -353,5 +355,7 @@ document.querySelector("#burger-menu").onclick = () => {
         menuButton.add("active");
         menuList.add("active");
     }
-
 }
+document.querySelectorAll(".button-navigation").forEach(item => {
+    item.addEventListener("click", () => menuOnMobile());
+})

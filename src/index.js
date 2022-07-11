@@ -163,15 +163,16 @@ function taggetButtonsListener() {
         item.onclick = () => {
             activateHtmlElem(item)
             let activeButtons = document.querySelectorAll(".tagget.active");
+            let section = activeButtons[0].parentElement.parentElement.parentElement.parentElement.parentElement;
             if (activeButtons.length === 0) {
-                let delectButton = document.querySelector("#delete-button");
+                let delectButton = section.querySelector(".delete-button");
                 if (delectButton.classList.contains('active')) {
                     delectButton.classList.remove('active');
                 }
                 return;
             };
-            let delectButton = document.querySelector("#delete-button");
-            delectButton.classList.add("active");
+            console.log(section)
+            section.querySelector(".delete-button").classList.add("active");
         };
     });
 
@@ -202,29 +203,28 @@ document.querySelector("#tab-button-add").onclick = () => {
     let Form = document.querySelector("#add-form");
     activateHtmlElem(Form);
 }
-document.querySelector("#delete-button").onclick = () => {
-    let store = baseData.transaction("NotesFilterDate", "readwrite")
-        .objectStore("NotesFilterDate"); //получаем доступ
-    console.log(document.querySelectorAll(".tagget.active"))
-    document.querySelectorAll(".tagget.active").forEach((item) => {
-        let elemId = item.parentElement.getAttribute("data-id");
-        let request = store.delete(Number(elemId));
-        document.querySelectorAll(`[data-id="${elemId}"]`).forEach(item => {
+
+document.querySelectorAll(".delete-button").forEach(deleteBtn => {
+    deleteBtn.onclick = () => {
+        let store = baseData.transaction("NotesFilterDate", "readwrite")
+            .objectStore("NotesFilterDate"); //получаем доступ
+        console.log(document.querySelectorAll(".tagget.active"))
+        document.querySelectorAll(".tagget.active").forEach((taggetElem) => {
+            let elemId = taggetElem.parentElement.getAttribute("data-id");
+            let request = store.delete(Number(elemId));
             request.onsuccess = () => {
-                console.log(item.parentElement.parentElement)
-                if (!item.parentElement.childNodes.length - 1) {
-                    item.parentElement.parentElement.remove()
-                } else {
+                document.querySelectorAll(`[data-id="${elemId}"]`).forEach(item => {
+                    let parentElem = item.parentElement;
                     item.remove();
-                }
-                document.querySelector("#delete-button").classList.remove("active");
-            }
-        })
-
-
-
-    })
-}
+                    if (parentElem.querySelectorAll(".note").length === 0) {
+                        parentElem.parentElement.remove()
+                    }
+                    deleteBtn.classList.remove("active");
+                });
+            };
+        });
+    };
+});
 
 document.querySelector('#search-btn').onclick = function (event) {
     event.preventDefault();
@@ -359,5 +359,14 @@ function menuOnMobile() {
     }
 }
 document.querySelectorAll(".button-navigation").forEach(item => {
-    item.addEventListener("click", () => menuOnMobile());
+    item.addEventListener("click", () => {
+        document.querySelectorAll(".tagget.active").forEach(item => {
+            item.classList.remove("active");
+        });
+        document.querySelectorAll(".delete-button").forEach(item => {
+            item.classList.remove("active");
+        });
+        menuOnMobile();
+
+    });
 })

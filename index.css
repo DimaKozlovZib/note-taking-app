@@ -75,6 +75,7 @@ h6 {
   position: relative;
   height: 18px;
   width: 30px;
+  min-width: 28px;
   display: none;
   cursor: pointer;
 }
@@ -153,6 +154,12 @@ h6 {
       -ms-flex-align: center;
           align-items: center;
   gap: 20px;
+}
+
+@media (max-width: 390px) {
+  .header__container {
+    gap: 10px;
+  }
 }
 
 .header__logo {
@@ -261,13 +268,12 @@ h6 {
 }
 
 .notes-contant-section {
-  padding-bottom: 25px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   display: none;
   height: 100%;
   overflow: auto;
-  padding: 10px 25px;
+  padding: 10px 25px 35px 25px;
 }
 
 .notes-contant-section.active {
@@ -406,7 +412,7 @@ h6 {
             justify-content: center;
   }
   .main {
-    position: relaitve;
+    position: relative;
   }
 }
 

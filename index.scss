@@ -71,6 +71,7 @@ h6 {
     position: relative;
     height: 18px;
     width: 30px;
+    min-width: 28px;
     display: none;
     cursor: pointer;
 
@@ -136,6 +137,11 @@ h6 {
         display: flex;
         align-items: center;
         gap: 20px;
+        @media (max-width: 390px){
+            &{
+                gap: 10px;
+            }
+        }
     }
     &__logo{
         font-size: 20px;
@@ -168,7 +174,8 @@ h6 {
                 margin: auto;
             }
         }
-    }  
+    }
+
 }
 
 
@@ -218,13 +225,12 @@ h6 {
 //.............main.....................................................................................
 
 .notes-contant-section{
-    padding-bottom: 25px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     display: none;
     height: 100%;
     overflow: auto;
-    padding: 10px 25px;
+    padding: 10px 25px 35px 25px;
     &.active{
         display: block; 
     }
@@ -328,7 +334,7 @@ h6 {
             justify-content: center;
         }
         &{
-            position: relaitve;
+            position: relative;
         }
     }
 }//

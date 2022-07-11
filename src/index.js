@@ -269,6 +269,7 @@ document.querySelector('#search-btn').onclick = function (event) {
                 console.log(object)
                 dateAndNotesBox = createHtmlNotesElments(date, object, key, containerWithNotes, "note-search-box");
                 [date, containerWithNotes] = dateAndNotesBox;
+                taggetButtonsListener();
             }
         },
         (error) => {
@@ -328,6 +329,7 @@ document.querySelector(".important-btn").onclick = function seeOnlyimportantNote
                 console.log(object)
                 dateAndNotesBox = createHtmlNotesElments(date, object, key, containerWithNotes, "note-important-box");
                 [date, containerWithNotes] = dateAndNotesBox;
+                taggetButtonsListener();
             }
         },
         (error) => {

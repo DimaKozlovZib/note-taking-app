@@ -178,9 +178,10 @@ function taggetButtonsListener() {
 
     document.querySelectorAll(".star").forEach(item => {
         item.onclick = () => {
-            activateHtmlElem(item);
-            console.log("jhshuhsuhg")
             let indexThisNotes = item.parentElement.getAttribute("data-id");
+            document.querySelectorAll(`[data-id="${indexThisNotes}"] .star`).forEach(star => {
+                activateHtmlElem(star);
+            });
             let store = baseData.transaction("NotesFilterDate", "readwrite")
                 .objectStore("NotesFilterDate"); //получаем доступ
             let object = store.get(Number(indexThisNotes))

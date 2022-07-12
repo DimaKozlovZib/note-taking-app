@@ -235,7 +235,9 @@ h6 {
         display: block; 
     }
 }
-.notes-box{
+.notes-title-text.noResult{
+    width: 100%;
+    text-align: center;
 }
 .main {
     overflow: hidden;
@@ -277,7 +279,7 @@ h6 {
             flex-wrap: wrap;
             display: flex;
             justify-content: space-between;
-            P {
+            h3{
                 white-space: nowrap;
                 padding-top: 3px;
             }

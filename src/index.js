@@ -323,6 +323,7 @@ document.querySelector(".important-btn").onclick = function seeOnlyimportantNote
     promise.then(
         (succesResult) => {
             document.querySelector("#notes-important-title").innerHTML = "ваши важные записи :";
+            document.querySelector("#notes-important-title").classist.remove("noResult");
             let date, dateAndNotesBox, containerWithNotes;
             for (let elem of succesResult) {
                 let object, key;
@@ -336,6 +337,7 @@ document.querySelector(".important-btn").onclick = function seeOnlyimportantNote
         (error) => {
             console.log(error);
             document.querySelector("#notes-important-title").innerHTML = error;
+            document.querySelector("#notes-important-title").classList.add("noResult");
         }
     );
     sectionManagement("important-container", true);
